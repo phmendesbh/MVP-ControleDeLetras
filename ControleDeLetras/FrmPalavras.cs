@@ -2,9 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
 
 namespace ControleDeLetras
 {
@@ -34,13 +32,13 @@ namespace ControleDeLetras
             chtLetras.ChartAreas[0].AxisX.Interval = 1;
             serie.Points.Clear();
             serie.Color = Color.LightPink;
-            foreach (KeyValuePair<string, int> letra in calculaQtdeLetras(palavras))
+            foreach (KeyValuePair<string, int> letra in CalculaQtdeLetras(palavras))
             {
                 serie.Points.AddXY(letra.Key, letra.Value);
             }
         }
 
-        private IDictionary<string, int> calculaQtdeLetras(List<string> palavras)
+        private IDictionary<string, int> CalculaQtdeLetras(List<string> palavras)
         {
             IDictionary<string, int> letrasQtde = new Dictionary<string, int>();
 
@@ -59,7 +57,7 @@ namespace ControleDeLetras
                 }
             });
 
-            return letrasQtde;
+            return new SortedDictionary<string, int>(letrasQtde);
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -73,19 +71,6 @@ namespace ControleDeLetras
             }
         }
 
-        private void lstPalavras_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txtPalavra.Text = lstPalavras.SelectedItem.ToString();
-        }
-
-        private void frmPalavras_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                txtPalavra.Text = "";
-            }
-        }
-
         private void btnRemover_Click(object sender, EventArgs e)
         {
             var retorno = MessageBox.Show("Confirma remoção da palavra?", "Aviso", MessageBoxButtons.YesNo);
@@ -95,6 +80,11 @@ namespace ControleDeLetras
                 PalavraRepositorio.RemoverPalavra();
                 AtualizaTela();
             }
+        }
+
+        private void lstPalavras_DoubleClick(object sender, EventArgs e)
+        {
+            txtPalavra.Text = lstPalavras.SelectedItem.ToString();
         }
     }
 }

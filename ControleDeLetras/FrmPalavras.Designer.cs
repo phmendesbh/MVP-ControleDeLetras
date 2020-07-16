@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.lstPalavras = new System.Windows.Forms.ListBox();
             this.chtLetras = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -61,23 +61,24 @@
             this.lstPalavras.Size = new System.Drawing.Size(213, 459);
             this.lstPalavras.Sorted = true;
             this.lstPalavras.TabIndex = 4;
-            this.lstPalavras.SelectedIndexChanged += new System.EventHandler(this.lstPalavras_SelectedIndexChanged);
+            this.lstPalavras.DoubleClick += new System.EventHandler(this.lstPalavras_DoubleClick);
             // 
             // chtLetras
             // 
             this.chtLetras.BorderlineWidth = 0;
-            chartArea2.Name = "ChartArea1";
-            this.chtLetras.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chtLetras.Legends.Add(legend2);
+            chartArea3.Name = "ChartArea1";
+            this.chtLetras.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chtLetras.Legends.Add(legend3);
             this.chtLetras.Location = new System.Drawing.Point(231, 12);
             this.chtLetras.Name = "chtLetras";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            series2.Legend = "Legend1";
-            series2.Name = "Letras";
-            this.chtLetras.Series.Add(series2);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            series3.IsValueShownAsLabel = true;
+            series3.Legend = "Legend1";
+            series3.Name = "Letras";
+            this.chtLetras.Series.Add(series3);
             this.chtLetras.Size = new System.Drawing.Size(612, 545);
             this.chtLetras.TabIndex = 5;
             this.chtLetras.Text = "Letras utilizadas";
@@ -106,12 +107,12 @@
             // 
             // txtPalavra
             // 
+            this.txtPalavra.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtPalavra.Location = new System.Drawing.Point(8, 25);
             this.txtPalavra.MaxLength = 26;
             this.txtPalavra.Name = "txtPalavra";
             this.txtPalavra.Size = new System.Drawing.Size(197, 20);
             this.txtPalavra.TabIndex = 0;
-            this.txtPalavra.Text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             // 
             // btnRemover
             // 
@@ -144,7 +145,6 @@
             this.Name = "FrmPalavras";
             this.Text = "Controle de Letras";
             this.Load += new System.EventHandler(this.FrmPalavras_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmPalavras_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.chtLetras)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
