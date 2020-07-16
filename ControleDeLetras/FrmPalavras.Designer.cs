@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.lstPalavras = new System.Windows.Forms.ListBox();
             this.chtLetras = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -58,7 +58,7 @@
             this.lstPalavras.FormattingEnabled = true;
             this.lstPalavras.Location = new System.Drawing.Point(12, 100);
             this.lstPalavras.Name = "lstPalavras";
-            this.lstPalavras.Size = new System.Drawing.Size(213, 329);
+            this.lstPalavras.Size = new System.Drawing.Size(213, 459);
             this.lstPalavras.Sorted = true;
             this.lstPalavras.TabIndex = 4;
             this.lstPalavras.SelectedIndexChanged += new System.EventHandler(this.lstPalavras_SelectedIndexChanged);
@@ -66,18 +66,19 @@
             // chtLetras
             // 
             this.chtLetras.BorderlineWidth = 0;
-            chartArea1.Name = "ChartArea1";
-            this.chtLetras.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chtLetras.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chtLetras.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chtLetras.Legends.Add(legend2);
             this.chtLetras.Location = new System.Drawing.Point(231, 12);
             this.chtLetras.Name = "chtLetras";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chtLetras.Series.Add(series1);
-            this.chtLetras.Size = new System.Drawing.Size(300, 417);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            series2.Legend = "Legend1";
+            series2.Name = "Letras";
+            this.chtLetras.Series.Add(series2);
+            this.chtLetras.Size = new System.Drawing.Size(612, 545);
             this.chtLetras.TabIndex = 5;
             this.chtLetras.Text = "Letras utilizadas";
             // 
@@ -133,9 +134,10 @@
             // 
             // FrmPalavras
             // 
+            this.AcceptButton = this.btnAdicionar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(542, 442);
+            this.ClientSize = new System.Drawing.Size(855, 559);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.chtLetras);
             this.Controls.Add(this.lstPalavras);

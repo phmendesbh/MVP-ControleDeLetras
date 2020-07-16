@@ -34,7 +34,6 @@ namespace ControleDeLetras.Repositorio
 
         public List<string> ObterPalavras()
         {
-            DataTable tblPalavras = new DataTable();
             var palavras = new List<string>();
 
             using (var connection = new SqliteConnection(CriaConexao().ConnectionString))
@@ -62,7 +61,7 @@ namespace ControleDeLetras.Repositorio
             return palavras;
         }
 
-        public void RemoverPalavra(int id)
+        public void RemoverPalavra()
         {
             using (var connection = new SqliteConnection(CriaConexao().ConnectionString))
             {
@@ -71,7 +70,6 @@ namespace ControleDeLetras.Repositorio
                 using (var transaction = connection.BeginTransaction())
                 {
                     var deleteCmd = connection.CreateCommand();
-                    deleteCmd.Parameters.Add(new SqliteParameter("@id", id));
                     deleteCmd.CommandText = Resource_Queries.DELETE_PALAVRAS;
                     deleteCmd.ExecuteNonQuery();
 

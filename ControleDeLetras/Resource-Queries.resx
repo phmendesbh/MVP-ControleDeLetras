@@ -121,7 +121,7 @@
     <value>CREATE TABLE IF NOT EXISTS palavras(id INTEGER PRIMARY KEY, descricao VARCHAR(15))</value>
   </data>
   <data name="DELETE_PALAVRAS" xml:space="preserve">
-    <value>DELETE TOP 1 FROM palavras WHERE id = @id</value>
+    <value>DELETE FROM palavras</value>
   </data>
   <data name="INSERT_PALAVRAS" xml:space="preserve">
     <value>INSERT INTO palavras (descricao) VALUES(@descricao)</value>

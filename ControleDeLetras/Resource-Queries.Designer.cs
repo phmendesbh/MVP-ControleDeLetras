@@ -70,7 +70,7 @@ namespace ControleDeLetras {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DELETE TOP 1 FROM palavras WHERE id = @id.
+        ///   Looks up a localized string similar to DELETE FROM palavras.
         /// </summary>
         internal static string DELETE_PALAVRAS {
             get {
