@@ -30,36 +30,30 @@ namespace ControleDeLetras.Repositorio
             return conexao;
         }
 
-        public List<string> ObterPalavras()
+        public Dictionary<int,string> ObterPalavras()
         {
-            var palavras = new List<string>();
+            var palavras = new Dictionary<int, string>();
 
             using (var connection = new SqliteConnection(CriaConexao().ConnectionString))
             {
                 connection.Open();
 
-                using (var transaction = connection.BeginTransaction())
+                var selectCmd = connection.CreateCommand();
+                selectCmd.CommandText = Resource_Queries.SELECT_PALAVRAS;
+
+                using (var reader = selectCmd.ExecuteReader())
                 {
-                    var selectCmd = connection.CreateCommand();
-                    selectCmd.CommandText = Resource_Queries.SELECT_PALAVRAS;
-
-                    using (var reader = selectCmd.ExecuteReader())
+                    while (reader.Read())
                     {
-                        while (reader.Read())
-                        {
-                            var result = reader.GetString(0);
-                            palavras.Add(result);
-                        }
+                        palavras.Add(reader.GetInt32(0), reader.GetString(1));
                     }
-
-                    transaction.Commit();
                 }
             }
 
             return palavras;
         }
 
-        public void RemoverPalavra()
+        public void RemoverPalavra(int id)
         {
             using (var connection = new SqliteConnection(CriaConexao().ConnectionString))
             {
@@ -68,6 +62,7 @@ namespace ControleDeLetras.Repositorio
                 using (var transaction = connection.BeginTransaction())
                 {
                     var deleteCmd = connection.CreateCommand();
+                    deleteCmd.Parameters.AddWithValue("@id", id);
                     deleteCmd.CommandText = Resource_Queries.DELETE_PALAVRAS;
                     deleteCmd.ExecuteNonQuery();
 
@@ -88,6 +83,25 @@ namespace ControleDeLetras.Repositorio
                     insertCmd.Parameters.Add(new SqliteParameter("@descricao", palavra));
                     insertCmd.CommandText = Resource_Queries.INSERT_PALAVRAS;
                     insertCmd.ExecuteNonQuery();
+
+                    transaction.Commit();
+                }
+            }
+        }
+
+        internal void AlterarPalavra(int id, string descricao)
+        {
+            using (var connection = new SqliteConnection(CriaConexao().ConnectionString))
+            {
+                connection.Open();
+
+                using (var transaction = connection.BeginTransaction())
+                {
+                    var deleteCmd = connection.CreateCommand();
+                    deleteCmd.Parameters.AddWithValue("@id", id);
+                    deleteCmd.Parameters.AddWithValue("@descricao", descricao);
+                    deleteCmd.CommandText = Resource_Queries.UPDATE_PALAVRAS;
+                    deleteCmd.ExecuteNonQuery();
 
                     transaction.Commit();
                 }
