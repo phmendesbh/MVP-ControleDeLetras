@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ControleDeLetras
@@ -9,6 +10,7 @@ namespace ControleDeLetras
     public partial class FrmPalavras : Form
     {
         PalavraRepositorio PalavraRepositorio = new PalavraRepositorio();
+        Dictionary<int, string> palavras;
 
         public FrmPalavras()
         {
@@ -23,9 +25,16 @@ namespace ControleDeLetras
 
         private void AtualizaTela()
         {
-            var palavras = PalavraRepositorio.ObterPalavras();
-            lstPalavras.DataSource = palavras;
+            palavras = PalavraRepositorio.ObterPalavras();
+            lstPalavras.DataSource = palavras.Select(s => s.Value).ToList();
 
+            MontaGrafico(palavras);
+
+            txtPalavra.Text = "";
+        }
+
+        private void MontaGrafico(Dictionary<int, string> palavras)
+        {
             // Monta gráfico
             var serie = chtLetras.Series["Letras"];
 
@@ -38,11 +47,12 @@ namespace ControleDeLetras
             }
         }
 
-        private IDictionary<string, int> CalculaQtdeLetras(List<string> palavras)
+        private IDictionary<string, int> CalculaQtdeLetras(Dictionary<int, string> palavras)
         {
             IDictionary<string, int> letrasQtde = new Dictionary<string, int>();
+            var lstPalavars = palavras.Select(s => s.Value).ToList();
 
-            palavras.ForEach(palavra => {
+            lstPalavars.ForEach(palavra => {
                 var letras = palavra.ToUpper().ToCharArray();
                 foreach (var letra in letras)
                 {
@@ -62,10 +72,14 @@ namespace ControleDeLetras
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            if (txtPalavra.Text.Trim() != String.Empty)
-            {
-                var palavra = txtPalavra.Text.ToUpper();
+            var palavra = txtPalavra.Text.ToUpper();
 
+            if (palavra == string.Empty) return;
+
+            var retorno = MessageBox.Show($"Confirma inclusão da palavra '{palavra}' ?", "Adicionar", MessageBoxButtons.YesNo);
+
+            if (retorno == DialogResult.Yes)
+            {
                 PalavraRepositorio.InserirPalavra(palavra);
                 AtualizaTela();
             }
@@ -73,11 +87,13 @@ namespace ControleDeLetras
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
-            var retorno = MessageBox.Show("Confirma remoção da palavra?", "Aviso", MessageBoxButtons.YesNo);
+            if (lstPalavras.SelectedItem == null) return;
+
+            var retorno = MessageBox.Show($"Confirma remoção da palavra '{lstPalavras.SelectedItem}' ?", "Remover", MessageBoxButtons.YesNo);
 
             if (retorno == DialogResult.Yes)
             {
-                PalavraRepositorio.RemoverPalavra();
+                PalavraRepositorio.RemoverPalavra(palavras.Where(s=> s.Value == lstPalavras.SelectedItem.ToString()).FirstOrDefault().Key);
                 AtualizaTela();
             }
         }
@@ -85,6 +101,20 @@ namespace ControleDeLetras
         private void lstPalavras_DoubleClick(object sender, EventArgs e)
         {
             txtPalavra.Text = lstPalavras.SelectedItem.ToString();
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            if (lstPalavras.SelectedItem == null || txtPalavra.Text.Trim() == string.Empty) return;
+
+            var palavraAlterada = txtPalavra.Text.Trim();
+            var retorno = MessageBox.Show($"Confirma alteração da palavra '{lstPalavras.SelectedItem}' para '{palavraAlterada}'?", "Alterar", MessageBoxButtons.YesNo);
+
+            if (retorno == DialogResult.Yes)
+            {
+                PalavraRepositorio.AlterarPalavra(palavras.Where(s => s.Value == lstPalavras.SelectedItem.ToString()).FirstOrDefault().Key,palavraAlterada);
+                AtualizaTela();
+            }
         }
     }
 }

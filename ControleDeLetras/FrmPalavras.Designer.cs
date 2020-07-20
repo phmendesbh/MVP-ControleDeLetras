@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.lstPalavras = new System.Windows.Forms.ListBox();
             this.chtLetras = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -66,19 +66,19 @@
             // chtLetras
             // 
             this.chtLetras.BorderlineWidth = 0;
-            chartArea3.Name = "ChartArea1";
-            this.chtLetras.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chtLetras.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chtLetras.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chtLetras.Legends.Add(legend1);
             this.chtLetras.Location = new System.Drawing.Point(231, 12);
             this.chtLetras.Name = "chtLetras";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            series3.IsValueShownAsLabel = true;
-            series3.Legend = "Legend1";
-            series3.Name = "Letras";
-            this.chtLetras.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            series1.IsValueShownAsLabel = true;
+            series1.Legend = "Legend1";
+            series1.Name = "Letras";
+            this.chtLetras.Series.Add(series1);
             this.chtLetras.Size = new System.Drawing.Size(612, 545);
             this.chtLetras.TabIndex = 5;
             this.chtLetras.Text = "Letras utilizadas";
@@ -132,6 +132,7 @@
             this.btnAlterar.TabIndex = 2;
             this.btnAlterar.Text = "Modificar";
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // FrmPalavras
             // 
