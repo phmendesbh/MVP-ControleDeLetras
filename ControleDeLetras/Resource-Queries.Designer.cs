@@ -70,7 +70,7 @@ namespace ControleDeLetras {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DELETE FROM palavras.
+        ///   Looks up a localized string similar to DELETE FROM palavras WHERE id = @id.
         /// </summary>
         internal static string DELETE_PALAVRAS {
             get {
@@ -88,7 +88,7 @@ namespace ControleDeLetras {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT descricao FROM palavras.
+        ///   Looks up a localized string similar to SELECT * FROM palavras.
         /// </summary>
         internal static string SELECT_PALAVRAS {
             get {

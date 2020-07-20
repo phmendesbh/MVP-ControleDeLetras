@@ -121,13 +121,13 @@
     <value>CREATE TABLE IF NOT EXISTS palavras(id INTEGER PRIMARY KEY, descricao VARCHAR(15))</value>
   </data>
   <data name="DELETE_PALAVRAS" xml:space="preserve">
-    <value>DELETE FROM palavras</value>
+    <value>DELETE FROM palavras WHERE id = @id</value>
   </data>
   <data name="INSERT_PALAVRAS" xml:space="preserve">
     <value>INSERT INTO palavras (descricao) VALUES(@descricao)</value>
   </data>
   <data name="SELECT_PALAVRAS" xml:space="preserve">
-    <value>SELECT descricao FROM palavras</value>
+    <value>SELECT * FROM palavras</value>
   </data>
   <data name="UPDATE_PALAVRAS" xml:space="preserve">
     <value>UPDATE palavras SET descricao = @descricao WHERE id = @id</value>
