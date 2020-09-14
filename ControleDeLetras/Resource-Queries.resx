@@ -117,17 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CREATE_TABLE_LETRA" xml:space="preserve">
+    <value>CREATE TABLE IF NOT EXISTS letra(id INTEGER PRIMARY KEY, descricao CHAR(1), quantidade INTEGER)</value>
+  </data>
   <data name="CREATE_TABLE_PALAVRAS" xml:space="preserve">
     <value>CREATE TABLE IF NOT EXISTS palavras(id INTEGER PRIMARY KEY, descricao VARCHAR(15))</value>
+  </data>
+  <data name="DELETE_LETRA" xml:space="preserve">
+    <value>DELETE FROM letra WHERE id = @id</value>
   </data>
   <data name="DELETE_PALAVRAS" xml:space="preserve">
     <value>DELETE FROM palavras WHERE id = @id</value>
   </data>
+  <data name="INSERT_LETRA" xml:space="preserve">
+    <value>INSERT INTO letra(descricao, quantidade) VALUES(@descricao, @quantidade)</value>
+  </data>
   <data name="INSERT_PALAVRAS" xml:space="preserve">
     <value>INSERT INTO palavras (descricao) VALUES(@descricao)</value>
   </data>
+  <data name="SELECT_LETRA" xml:space="preserve">
+    <value>SELECT id, descricao, quantidade FROM letra</value>
+  </data>
+  <data name="SELECT_LETRA_POR_ID" xml:space="preserve">
+    <value>SELECT id, descricao, quantidade FROM letra WHERE id = @id</value>
+  </data>
   <data name="SELECT_PALAVRAS" xml:space="preserve">
-    <value>SELECT * FROM palavras</value>
+    <value>SELECT id, descricao FROM palavras</value>
+  </data>
+  <data name="UPDATE_LETRA" xml:space="preserve">
+    <value>UPDATE palavras SET descricao = @descricao, quantidade = @quantidade WHERE id = @id</value>
+  </data>
+  <data name="UPDATE_LETRA_QUANTIDADE" xml:space="preserve">
+    <value>UPDATE palavras SET quantidade = @quantidade WHERE id = @id</value>
   </data>
   <data name="UPDATE_PALAVRAS" xml:space="preserve">
     <value>UPDATE palavras SET descricao = @descricao WHERE id = @id</value>
