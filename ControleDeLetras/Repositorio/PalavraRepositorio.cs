@@ -1,13 +1,11 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using ControleDeLetras.Interface;
+using Microsoft.Data.Sqlite;
 using System.Collections.Generic;
 
 namespace ControleDeLetras.Repositorio
 {
-    public class PalavraRepositorio
+    public class PalavraRepositorio: IRepos
     {
-        /// <summary>
-        /// Se não existir o banco, cria ele e a tabela
-        /// </summary>
         public void VerificaBanco()
         {
             using (var connection = new SqliteConnection(CriaConexao().ConnectionString))
@@ -20,7 +18,7 @@ namespace ControleDeLetras.Repositorio
             }
         }
 
-        private SqliteConnectionStringBuilder CriaConexao()
+        public SqliteConnectionStringBuilder CriaConexao()
         {
             var conexao = new SqliteConnectionStringBuilder
             {
@@ -30,7 +28,7 @@ namespace ControleDeLetras.Repositorio
             return conexao;
         }
 
-        public Dictionary<int,string> ObterPalavras()
+        public Dictionary<int,string> Obter()
         {
             var palavras = new Dictionary<int, string>();
 
@@ -53,7 +51,7 @@ namespace ControleDeLetras.Repositorio
             return palavras;
         }
 
-        public void RemoverPalavra(int id)
+        public void Remover(int id)
         {
             using (var connection = new SqliteConnection(CriaConexao().ConnectionString))
             {
@@ -71,7 +69,7 @@ namespace ControleDeLetras.Repositorio
             }
         }
 
-        public void InserirPalavra(string palavra)
+        public void Inserir(string palavra)
         {
             using (var connection = new SqliteConnection(CriaConexao().ConnectionString))
             {
@@ -89,7 +87,7 @@ namespace ControleDeLetras.Repositorio
             }
         }
 
-        internal void AlterarPalavra(int id, string descricao)
+        internal void Alterar(int id, string descricao)
         {
             using (var connection = new SqliteConnection(CriaConexao().ConnectionString))
             {
@@ -97,11 +95,11 @@ namespace ControleDeLetras.Repositorio
 
                 using (var transaction = connection.BeginTransaction())
                 {
-                    var deleteCmd = connection.CreateCommand();
-                    deleteCmd.Parameters.AddWithValue("@id", id);
-                    deleteCmd.Parameters.AddWithValue("@descricao", descricao);
-                    deleteCmd.CommandText = Resource_Queries.UPDATE_PALAVRAS;
-                    deleteCmd.ExecuteNonQuery();
+                    var updateCmd = connection.CreateCommand();
+                    updateCmd.Parameters.AddWithValue("@id", id);
+                    updateCmd.Parameters.AddWithValue("@descricao", descricao);
+                    updateCmd.CommandText = Resource_Queries.UPDATE_PALAVRAS;
+                    updateCmd.ExecuteNonQuery();
 
                     transaction.Commit();
                 }
