@@ -1,4 +1,5 @@
-﻿using ControleDeLetras.Interface;
+﻿using ControleDeLetras.Entidade;
+using ControleDeLetras.Interface;
 using Microsoft.Data.Sqlite;
 using System.Collections.Generic;
 
@@ -28,9 +29,9 @@ namespace ControleDeLetras.Repositorio
             return conexao;
         }
 
-        public Dictionary<int,string> Obter()
+        public List<Palavra> Obter()
         {
-            var palavras = new Dictionary<int, string>();
+            var lstPalavras = new List<Palavra>();
 
             using (var connection = new SqliteConnection(CriaConexao().ConnectionString))
             {
@@ -43,15 +44,15 @@ namespace ControleDeLetras.Repositorio
                 {
                     while (reader.Read())
                     {
-                        palavras.Add(reader.GetInt32(0), reader.GetString(1));
+                        lstPalavras.Add(new Palavra(reader.GetInt32(0), reader.GetString(1)));
                     }
                 }
             }
 
-            return palavras;
+            return lstPalavras;
         }
 
-        public void Remover(int id)
+        internal void Remover(int id)
         {
             using (var connection = new SqliteConnection(CriaConexao().ConnectionString))
             {
@@ -69,7 +70,7 @@ namespace ControleDeLetras.Repositorio
             }
         }
 
-        public void Inserir(string palavra)
+        internal void Inserir(string palavra)
         {
             using (var connection = new SqliteConnection(CriaConexao().ConnectionString))
             {
@@ -87,7 +88,7 @@ namespace ControleDeLetras.Repositorio
             }
         }
 
-        internal void Alterar(int id, string descricao)
+        internal void Alterar(Palavra palavra)
         {
             using (var connection = new SqliteConnection(CriaConexao().ConnectionString))
             {
@@ -96,8 +97,8 @@ namespace ControleDeLetras.Repositorio
                 using (var transaction = connection.BeginTransaction())
                 {
                     var updateCmd = connection.CreateCommand();
-                    updateCmd.Parameters.AddWithValue("@id", id);
-                    updateCmd.Parameters.AddWithValue("@descricao", descricao);
+                    updateCmd.Parameters.AddWithValue("@id", palavra.Id);
+                    updateCmd.Parameters.AddWithValue("@descricao", palavra.Descricao);
                     updateCmd.CommandText = Resource_Queries.UPDATE_PALAVRAS;
                     updateCmd.ExecuteNonQuery();
 

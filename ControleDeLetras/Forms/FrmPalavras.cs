@@ -1,4 +1,5 @@
-﻿using ControleDeLetras.Repositorio;
+﻿using ControleDeLetras.Entidade;
+using ControleDeLetras.Repositorio;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -9,8 +10,8 @@ namespace ControleDeLetras
 {
     public partial class FrmPalavras : Form
     {
-        PalavraRepositorio PalavraRepositorio = new PalavraRepositorio();
-        Dictionary<int, string> palavras;
+        readonly PalavraRepositorio PalavraRepositorio = new PalavraRepositorio();
+        List<Palavra> lstPalavras = new List<Palavra>();
 
         public FrmPalavras()
         {
@@ -25,15 +26,18 @@ namespace ControleDeLetras
 
         private void AtualizaTela()
         {
-            palavras = PalavraRepositorio.Obter();
-            lstPalavras.DataSource = palavras.Select(s => s.Value).ToList();
+            lstPalavras = PalavraRepositorio.Obter().ToList();
 
-            MontaGrafico(palavras);
+            List<string> lista = lstPalavras.Select(palavra => palavra.Descricao).ToList();
+
+            lstBPalavras.DataSource = lista;
+
+            MontaGrafico(lista);
 
             txtPalavra.Text = "";
         }
 
-        private void MontaGrafico(Dictionary<int, string> palavras)
+        private void MontaGrafico(List<string> palavras)
         {
             // Monta gráfico
             var serie = chtLetras.Series["Letras"];
@@ -47,12 +51,11 @@ namespace ControleDeLetras
             }
         }
 
-        private IDictionary<string, int> CalculaQtdeLetras(Dictionary<int, string> palavras)
+        private IDictionary<string, int> CalculaQtdeLetras(List<string> lstPalavras)
         {
             IDictionary<string, int> letrasQtde = new Dictionary<string, int>();
-            var lstPalavars = palavras.Select(s => s.Value).ToList();
 
-            lstPalavars.ForEach(palavra => {
+            lstPalavras.ForEach(palavra => {
                 var letras = palavra.ToUpper().ToCharArray();
                 foreach (var letra in letras)
                 {
@@ -87,32 +90,38 @@ namespace ControleDeLetras
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
-            if (lstPalavras.SelectedItem == null) return;
+            if (lstBPalavras.SelectedItem == null) return;
 
-            var retorno = MessageBox.Show($"Confirma remoção da palavra '{lstPalavras.SelectedItem}' ?", "Remover", MessageBoxButtons.YesNo);
+            var retorno = MessageBox.Show($"Confirma remoção da palavra '{lstBPalavras.SelectedItem}' ?", "Remover", MessageBoxButtons.YesNo);
 
             if (retorno == DialogResult.Yes)
             {
-                PalavraRepositorio.Remover(palavras.Where(s=> s.Value == lstPalavras.SelectedItem.ToString()).FirstOrDefault().Key);
+                PalavraRepositorio.Remover(lstPalavras.Where(s=> s.Descricao == lstBPalavras.SelectedItem.ToString()).FirstOrDefault().Id);
                 AtualizaTela();
             }
         }
 
         private void lstPalavras_DoubleClick(object sender, EventArgs e)
         {
-            txtPalavra.Text = lstPalavras.SelectedItem.ToString();
+            txtPalavra.Text = lstBPalavras.SelectedItem.ToString();
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            if (lstPalavras.SelectedItem == null || txtPalavra.Text.Trim() == string.Empty) return;
+            if (lstBPalavras.SelectedItem == null || txtPalavra.Text.Trim() == string.Empty) return;
 
-            var palavraAlterada = txtPalavra.Text.Trim();
-            var retorno = MessageBox.Show($"Confirma alteração da palavra '{lstPalavras.SelectedItem}' para '{palavraAlterada}'?", "Alterar", MessageBoxButtons.YesNo);
+            string palavraAntiga = lstBPalavras.SelectedItem.ToString();
+
+            Palavra palavraNova = new Palavra(
+                lstPalavras.Where(s => s.Descricao == lstBPalavras.SelectedItem.ToString()).FirstOrDefault().Id,
+                txtPalavra.Text.Trim());
+
+            var retorno = MessageBox.Show($"Confirma alteração da palavra '{palavraAntiga}' para '{palavraNova.Descricao}'?", "Alterar", MessageBoxButtons.YesNo);
 
             if (retorno == DialogResult.Yes)
             {
-                PalavraRepositorio.Alterar(palavras.Where(s => s.Value == lstPalavras.SelectedItem.ToString()).FirstOrDefault().Key,palavraAlterada);
+                PalavraRepositorio.Alterar(palavraNova);
+
                 AtualizaTela();
             }
         }
