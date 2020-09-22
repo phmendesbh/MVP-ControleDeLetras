@@ -117,40 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="MATERIAL_CREATE_TABLE" xml:space="preserve">
-    <value>CREATE TABLE IF NOT EXISTS material(id INTEGER PRIMARY KEY, descricao VARCHAR(30), quantidade INTEGER)</value>
-  </data>
-  <data name="MATERIAL_DELETE" xml:space="preserve">
-    <value>DELETE FROM material WHERE id = @id</value>
-  </data>
-  <data name="MATERIAL_INSERT" xml:space="preserve">
-    <value>INSERT INTO material(descricao, quantidade) VALUES(@descricao, @quantidade)</value>
-  </data>
-  <data name="MATERIAL_SELECT" xml:space="preserve">
-    <value>SELECT id, descricao, quantidade FROM material</value>
-  </data>
-  <data name="MATERIAL_SELECT_POR_ID" xml:space="preserve">
-    <value>SELECT id, descricao, quantidade FROM material WHERE id = @id</value>
-  </data>
-  <data name="MATERIAL_UPDATE" xml:space="preserve">
-    <value>UPDATE material SET descricao = @descricao, quantidade = @quantidade WHERE id = @id</value>
-  </data>
-  <data name="MATERIAL_UPDATE_QUANTIDADE" xml:space="preserve">
-    <value>UPDATE material SET quantidade = quantidade + @quantidade WHERE id = @id</value>
-  </data>
-  <data name="PALAVRAS_CREATE_TABLE" xml:space="preserve">
-    <value>CREATE TABLE IF NOT EXISTS palavras(id INTEGER PRIMARY KEY, descricao VARCHAR(15))</value>
-  </data>
-  <data name="PALAVRAS_DELETE" xml:space="preserve">
-    <value>DELETE FROM palavras WHERE id = @id</value>
-  </data>
-  <data name="PALAVRAS_INSERT" xml:space="preserve">
-    <value>INSERT INTO palavras (descricao) VALUES(@descricao)</value>
-  </data>
-  <data name="PALAVRAS_SELECT" xml:space="preserve">
-    <value>SELECT id, descricao FROM palavras</value>
-  </data>
-  <data name="PALAVRAS_UPDATE" xml:space="preserve">
-    <value>UPDATE palavras SET descricao = @descricao WHERE id = @id</value>
-  </data>
 </root>

@@ -32,7 +32,7 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnAdicionar = new System.Windows.Forms.Button();
-            this.lstPalavras = new System.Windows.Forms.ListBox();
+            this.lstBPalavras = new System.Windows.Forms.ListBox();
             this.chtLetras = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -53,15 +53,15 @@
             this.btnAdicionar.UseVisualStyleBackColor = true;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
-            // lstPalavras
+            // lstBPalavras
             // 
-            this.lstPalavras.FormattingEnabled = true;
-            this.lstPalavras.Location = new System.Drawing.Point(12, 100);
-            this.lstPalavras.Name = "lstPalavras";
-            this.lstPalavras.Size = new System.Drawing.Size(213, 459);
-            this.lstPalavras.Sorted = true;
-            this.lstPalavras.TabIndex = 4;
-            this.lstPalavras.DoubleClick += new System.EventHandler(this.lstPalavras_DoubleClick);
+            this.lstBPalavras.FormattingEnabled = true;
+            this.lstBPalavras.Location = new System.Drawing.Point(12, 100);
+            this.lstBPalavras.Name = "lstBPalavras";
+            this.lstBPalavras.Size = new System.Drawing.Size(213, 459);
+            this.lstBPalavras.Sorted = true;
+            this.lstBPalavras.TabIndex = 4;
+            this.lstBPalavras.DoubleClick += new System.EventHandler(this.lstPalavras_DoubleClick);
             // 
             // chtLetras
             // 
@@ -142,7 +142,7 @@
             this.ClientSize = new System.Drawing.Size(855, 559);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.chtLetras);
-            this.Controls.Add(this.lstPalavras);
+            this.Controls.Add(this.lstBPalavras);
             this.Name = "FrmPalavras";
             this.Text = "Controle de Letras";
             this.Load += new System.EventHandler(this.FrmPalavras_Load);
@@ -156,7 +156,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnAdicionar;
-        private System.Windows.Forms.ListBox lstPalavras;
+        private System.Windows.Forms.ListBox lstBPalavras;
         private System.Windows.Forms.DataVisualization.Charting.Chart chtLetras;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;

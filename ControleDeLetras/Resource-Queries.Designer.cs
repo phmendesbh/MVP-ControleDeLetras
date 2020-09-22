@@ -61,47 +61,110 @@ namespace ControleDeLetras {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CREATE TABLE IF NOT EXISTS material(id INTEGER PRIMARY KEY, descricao VARCHAR(30), quantidade INTEGER).
+        /// </summary>
+        internal static string MATERIAL_CREATE_TABLE {
+            get {
+                return ResourceManager.GetString("MATERIAL_CREATE_TABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DELETE FROM material WHERE id = @id.
+        /// </summary>
+        internal static string MATERIAL_DELETE {
+            get {
+                return ResourceManager.GetString("MATERIAL_DELETE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO material(descricao, quantidade) VALUES(@descricao, @quantidade).
+        /// </summary>
+        internal static string MATERIAL_INSERT {
+            get {
+                return ResourceManager.GetString("MATERIAL_INSERT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT id, descricao, quantidade FROM material.
+        /// </summary>
+        internal static string MATERIAL_SELECT {
+            get {
+                return ResourceManager.GetString("MATERIAL_SELECT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT id, descricao, quantidade FROM material WHERE id = @id.
+        /// </summary>
+        internal static string MATERIAL_SELECT_POR_ID {
+            get {
+                return ResourceManager.GetString("MATERIAL_SELECT_POR_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UPDATE material SET descricao = @descricao, quantidade = @quantidade WHERE id = @id.
+        /// </summary>
+        internal static string MATERIAL_UPDATE {
+            get {
+                return ResourceManager.GetString("MATERIAL_UPDATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UPDATE material SET quantidade = quantidade + @quantidade WHERE id = @id.
+        /// </summary>
+        internal static string MATERIAL_UPDATE_QUANTIDADE {
+            get {
+                return ResourceManager.GetString("MATERIAL_UPDATE_QUANTIDADE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CREATE TABLE IF NOT EXISTS palavras(id INTEGER PRIMARY KEY, descricao VARCHAR(15)).
         /// </summary>
-        internal static string CREATE_TABLE_PALAVRAS {
+        internal static string PALAVRAS_CREATE_TABLE {
             get {
-                return ResourceManager.GetString("CREATE_TABLE_PALAVRAS", resourceCulture);
+                return ResourceManager.GetString("PALAVRAS_CREATE_TABLE", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to DELETE FROM palavras WHERE id = @id.
         /// </summary>
-        internal static string DELETE_PALAVRAS {
+        internal static string PALAVRAS_DELETE {
             get {
-                return ResourceManager.GetString("DELETE_PALAVRAS", resourceCulture);
+                return ResourceManager.GetString("PALAVRAS_DELETE", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to INSERT INTO palavras (descricao) VALUES(@descricao).
         /// </summary>
-        internal static string INSERT_PALAVRAS {
+        internal static string PALAVRAS_INSERT {
             get {
-                return ResourceManager.GetString("INSERT_PALAVRAS", resourceCulture);
+                return ResourceManager.GetString("PALAVRAS_INSERT", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT * FROM palavras.
+        ///   Looks up a localized string similar to SELECT id, descricao FROM palavras.
         /// </summary>
-        internal static string SELECT_PALAVRAS {
+        internal static string PALAVRAS_SELECT {
             get {
-                return ResourceManager.GetString("SELECT_PALAVRAS", resourceCulture);
+                return ResourceManager.GetString("PALAVRAS_SELECT", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to UPDATE palavras SET descricao = @descricao WHERE id = @id.
         /// </summary>
-        internal static string UPDATE_PALAVRAS {
+        internal static string PALAVRAS_UPDATE {
             get {
-                return ResourceManager.GetString("UPDATE_PALAVRAS", resourceCulture);
+                return ResourceManager.GetString("PALAVRAS_UPDATE", resourceCulture);
             }
         }
     }
