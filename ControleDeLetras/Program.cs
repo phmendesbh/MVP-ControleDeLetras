@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ControleDeLetras.Forms;
+using System;
 using System.Windows.Forms;
 
 namespace ControleDeLetras
@@ -13,7 +14,8 @@ namespace ControleDeLetras
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmPalavras());
+            //Application.Run(new FrmPalavras());
+            Application.Run(new FrmMateriais());
         }
     }
 }
