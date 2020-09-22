@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace ControleDeLetras.Repositorio
 {
-    public class PalavraRepositorio: IRepos
+    public class PalavraRepositorio: RepositorioBase, IRepos
     {
         public void VerificaBanco()
         {
@@ -14,19 +14,9 @@ namespace ControleDeLetras.Repositorio
                 connection.Open();
 
                 var tableCmd = connection.CreateCommand();
-                tableCmd.CommandText = Resource_Queries.CREATE_TABLE_PALAVRAS;
+                tableCmd.CommandText = Resource_Queries.PALAVRAS_CREATE_TABLE;
                 tableCmd.ExecuteNonQuery();
             }
-        }
-
-        public SqliteConnectionStringBuilder CriaConexao()
-        {
-            var conexao = new SqliteConnectionStringBuilder
-            {
-                DataSource = "./palavrasDb.db"
-            };
-
-            return conexao;
         }
 
         public List<Palavra> Obter()
@@ -38,7 +28,7 @@ namespace ControleDeLetras.Repositorio
                 connection.Open();
 
                 var selectCmd = connection.CreateCommand();
-                selectCmd.CommandText = Resource_Queries.SELECT_PALAVRAS;
+                selectCmd.CommandText = Resource_Queries.PALAVRAS_SELECT;
 
                 using (var reader = selectCmd.ExecuteReader())
                 {
@@ -62,7 +52,7 @@ namespace ControleDeLetras.Repositorio
                 {
                     var deleteCmd = connection.CreateCommand();
                     deleteCmd.Parameters.AddWithValue("@id", id);
-                    deleteCmd.CommandText = Resource_Queries.DELETE_PALAVRAS;
+                    deleteCmd.CommandText = Resource_Queries.PALAVRAS_DELETE;
                     deleteCmd.ExecuteNonQuery();
 
                     transaction.Commit();
@@ -80,7 +70,7 @@ namespace ControleDeLetras.Repositorio
                 {
                     var insertCmd = connection.CreateCommand();
                     insertCmd.Parameters.Add(new SqliteParameter("@descricao", palavra));
-                    insertCmd.CommandText = Resource_Queries.INSERT_PALAVRAS;
+                    insertCmd.CommandText = Resource_Queries.PALAVRAS_INSERT;
                     insertCmd.ExecuteNonQuery();
 
                     transaction.Commit();
@@ -99,7 +89,7 @@ namespace ControleDeLetras.Repositorio
                     var updateCmd = connection.CreateCommand();
                     updateCmd.Parameters.AddWithValue("@id", palavra.Id);
                     updateCmd.Parameters.AddWithValue("@descricao", palavra.Descricao);
-                    updateCmd.CommandText = Resource_Queries.UPDATE_PALAVRAS;
+                    updateCmd.CommandText = Resource_Queries.PALAVRAS_UPDATE;
                     updateCmd.ExecuteNonQuery();
 
                     transaction.Commit();
