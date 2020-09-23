@@ -11,6 +11,7 @@ namespace ControleDeLetras
     public partial class FrmPalavras : Form
     {
         readonly PalavraRepositorio PalavraRepositorio = new PalavraRepositorio();
+        readonly MaterialRepositorio MaterialRepositorio = new MaterialRepositorio();
         List<Palavra> lstPalavras = new List<Palavra>();
 
         public FrmPalavras()
@@ -83,9 +84,26 @@ namespace ControleDeLetras
 
             if (retorno == DialogResult.Yes)
             {
-                PalavraRepositorio.Inserir(palavra);
-                AtualizaTela();
+                if (AtualizaEstoqueLetras(palavra))
+                {
+                    PalavraRepositorio.Inserir(palavra);
+                    AtualizaTela();
+                }
             }
+        }
+
+        private bool AtualizaEstoqueLetras(string palavra)
+        {
+            var letras = MaterialRepositorio.Obter();
+            var palavraQtdeLetras = CalculaQtdeLetras(new List<string>() { palavra });
+
+            foreach (KeyValuePair<string, int> qtdeLetra in palavraQtdeLetras)
+            {
+                var letra = letras.Where(w => w.Descricao == qtdeLetra.Key).FirstOrDefault();
+                MaterialRepositorio.AlterarQuantidade(letra.Id, -qtdeLetra.Value);
+            };
+
+            return true;
         }
 
         private void btnRemover_Click(object sender, EventArgs e)

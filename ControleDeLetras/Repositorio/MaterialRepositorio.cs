@@ -22,6 +22,8 @@ namespace ControleDeLetras.Repositorio
                 tableCmd.CommandText = Resource_Queries.MATERIAL_CREATE_TABLE;
                 tableCmd.ExecuteNonQuery();
             }
+
+            VerificaInsereTodasAsLetras();
         }
 
         private void VerificaInsereTodasAsLetras()

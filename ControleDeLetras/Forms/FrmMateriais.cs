@@ -9,7 +9,7 @@ namespace ControleDeLetras.Forms
     public partial class FrmMateriais : Form
     {
         readonly MaterialRepositorio letraRepositorio = new MaterialRepositorio();
-        private Material materialSelecionado;
+        private Material materialSelecionado = new Material();
 
         public FrmMateriais()
         {
@@ -88,6 +88,11 @@ namespace ControleDeLetras.Forms
             if (retorno == DialogResult.Yes)
             {
                 letraRepositorio.Remover(materialSelecionado.Id);
+
+                txtDescricao.Text = "";
+                txtQtde.Value = 0;
+                txtAcresc.Value = 0;
+
                 AtualizaTela();
             }
         }
