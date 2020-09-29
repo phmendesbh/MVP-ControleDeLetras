@@ -188,7 +188,9 @@
             this.ClientSize = new System.Drawing.Size(370, 450);
             this.Controls.Add(this.dgvMateriais);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmMateriais";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Materiais";
             this.Load += new System.EventHandler(this.FrmLetras_Load);
             this.panel1.ResumeLayout(false);

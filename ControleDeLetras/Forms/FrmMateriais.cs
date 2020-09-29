@@ -1,7 +1,6 @@
 ﻿using ControleDeLetras.Entidade;
 using ControleDeLetras.Repositorio;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace ControleDeLetras.Forms
