@@ -1,17 +1,17 @@
 ﻿using ControleDeLetras.Entidade;
 using ControleDeLetras.Interface;
+using ControleDeLetras.Util;
 using Microsoft.Data.Sqlite;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ControleDeLetras.Repositorio
 {
     public class MaterialRepositorio: RepositorioBase, IRepos
     {
+        readonly Utils utils = new Utils();
+
         public void VerificaBanco()
         {
             using (var connection = new SqliteConnection(CriaConexao().ConnectionString))
@@ -117,6 +117,29 @@ namespace ControleDeLetras.Repositorio
             }
 
             return letras;
+        }
+
+        internal void AtualizaEstoqueLetras(Palavra palavra)
+        {
+            var letras = Obter();
+            var qtdeLetras = utils.CalculaQtdeLetras(new List<string>() { palavra.Descricao });
+
+            foreach (KeyValuePair<string, int> qtdeLetra in qtdeLetras)
+            {
+                var letra = letras.Where(w => w.Descricao == qtdeLetra.Key).FirstOrDefault();
+                AlterarQuantidade(letra.Id, qtdeLetra.Value * -1);
+            };
+
+            if (!string.IsNullOrWhiteSpace(palavra.DescricaoAntiga))
+            {
+                var qtdeLetrasAntigas = utils.CalculaQtdeLetras(new List<string>() { palavra.DescricaoAntiga });
+
+                foreach (KeyValuePair<string, int> qtdeLetra in qtdeLetrasAntigas)
+                {
+                    var letra = letras.Where(w => w.Descricao == qtdeLetra.Key).FirstOrDefault();
+                    AlterarQuantidade(letra.Id, qtdeLetra.Value);
+                };
+            }
         }
 
         public void Remover(int id)
