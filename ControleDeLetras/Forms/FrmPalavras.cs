@@ -1,5 +1,6 @@
 ﻿using ControleDeLetras.Entidade;
 using ControleDeLetras.Repositorio;
+using ControleDeLetras.Util;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -13,6 +14,7 @@ namespace ControleDeLetras
         readonly PalavraRepositorio PalavraRepositorio = new PalavraRepositorio();
         readonly MaterialRepositorio MaterialRepositorio = new MaterialRepositorio();
         List<Palavra> lstPalavras = new List<Palavra>();
+        readonly Utils Utils = new Utils();
 
         public FrmPalavras()
         {
@@ -46,32 +48,10 @@ namespace ControleDeLetras
             chtLetras.ChartAreas[0].AxisX.Interval = 1;
             serie.Points.Clear();
             serie.Color = Color.LightPink;
-            foreach (KeyValuePair<string, int> letra in CalculaQtdeLetras(palavras))
+            foreach (KeyValuePair<string, int> letra in Utils.CalculaQtdeLetras(palavras))
             {
                 serie.Points.AddXY(letra.Key, letra.Value);
             }
-        }
-
-        private IDictionary<string, int> CalculaQtdeLetras(List<string> lstPalavras)
-        {
-            IDictionary<string, int> letrasQtde = new Dictionary<string, int>();
-
-            lstPalavras.ForEach(palavra => {
-                var letras = palavra.ToUpper().ToCharArray();
-                foreach (var letra in letras)
-                {
-                    if (letrasQtde.ContainsKey(letra.ToString()))
-                    {
-                        letrasQtde[letra.ToString()] = letrasQtde[letra.ToString()] + 1;
-                    }
-                    else
-                    {
-                        letrasQtde.Add(letra.ToString(), 1);
-                    }
-                }
-            });
-
-            return new SortedDictionary<string, int>(letrasQtde);
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -84,37 +64,30 @@ namespace ControleDeLetras
 
             if (retorno == DialogResult.Yes)
             {
-                if (AtualizaEstoqueLetras(palavra))
-                {
-                    PalavraRepositorio.Inserir(palavra);
-                    AtualizaTela();
-                }
+                PalavraRepositorio.Inserir(palavra);
+                MaterialRepositorio.AtualizaEstoqueLetras(new Palavra(null, palavra));
+                AtualizaTela();
             }
-        }
-
-        private bool AtualizaEstoqueLetras(string palavra)
-        {
-            var letras = MaterialRepositorio.Obter();
-            var palavraQtdeLetras = CalculaQtdeLetras(new List<string>() { palavra });
-
-            foreach (KeyValuePair<string, int> qtdeLetra in palavraQtdeLetras)
-            {
-                var letra = letras.Where(w => w.Descricao == qtdeLetra.Key).FirstOrDefault();
-                MaterialRepositorio.AlterarQuantidade(letra.Id, -qtdeLetra.Value);
-            };
-
-            return true;
         }
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
-            if (lstBPalavras.SelectedItem == null) return;
+            var palavraSelecionada = lstBPalavras.SelectedItem.ToString();
+            if (string.IsNullOrWhiteSpace(palavraSelecionada)) return;
 
-            var retorno = MessageBox.Show($"Confirma remoção da palavra '{lstBPalavras.SelectedItem}' ?", "Remover", MessageBoxButtons.YesNo);
+            var retorno = MessageBox.Show($"Confirma remoção da palavra '{palavraSelecionada}' ?", "Remover", MessageBoxButtons.YesNo);
 
             if (retorno == DialogResult.Yes)
             {
-                PalavraRepositorio.Remover(lstPalavras.Where(s=> s.Descricao == lstBPalavras.SelectedItem.ToString()).FirstOrDefault().Id);
+                Palavra palavra = new Palavra(
+                    lstPalavras.Where(s => s.Descricao == palavraSelecionada).FirstOrDefault().Id,
+                    string.Empty)
+                {
+                    DescricaoAntiga = palavraSelecionada
+                };
+
+                PalavraRepositorio.Remover(palavra);
+                MaterialRepositorio.AtualizaEstoqueLetras(palavra);
                 AtualizaTela();
             }
         }
@@ -128,18 +101,19 @@ namespace ControleDeLetras
         {
             if (lstBPalavras.SelectedItem == null || txtPalavra.Text.Trim() == string.Empty) return;
 
-            string palavraAntiga = lstBPalavras.SelectedItem.ToString();
-
-            Palavra palavraNova = new Palavra(
+            Palavra palavra = new Palavra(
                 lstPalavras.Where(s => s.Descricao == lstBPalavras.SelectedItem.ToString()).FirstOrDefault().Id,
-                txtPalavra.Text.Trim());
+                txtPalavra.Text.Trim())
+            {
+                DescricaoAntiga = lstBPalavras.SelectedItem.ToString()
+            };
 
-            var retorno = MessageBox.Show($"Confirma alteração da palavra '{palavraAntiga}' para '{palavraNova.Descricao}'?", "Alterar", MessageBoxButtons.YesNo);
+            var retorno = MessageBox.Show($"Confirma alteração da palavra '{palavra.DescricaoAntiga}' para '{palavra.Descricao}'? Isso irá alterar o estoque de letras.", "Alterar", MessageBoxButtons.YesNo);
 
             if (retorno == DialogResult.Yes)
             {
-                PalavraRepositorio.Alterar(palavraNova);
-
+                PalavraRepositorio.Alterar(palavra);
+                MaterialRepositorio.AtualizaEstoqueLetras(palavra);
                 AtualizaTela();
             }
         }

@@ -139,11 +139,13 @@
             this.AcceptButton = this.btnAdicionar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(855, 559);
+            this.ClientSize = new System.Drawing.Size(855, 566);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.chtLetras);
             this.Controls.Add(this.lstBPalavras);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmPalavras";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Controle de Letras";
             this.Load += new System.EventHandler(this.FrmPalavras_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chtLetras)).EndInit();
