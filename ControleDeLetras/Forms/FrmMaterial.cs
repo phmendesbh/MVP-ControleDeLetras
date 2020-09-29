@@ -23,6 +23,10 @@ namespace ControleDeLetras.Forms
 
         private void AtualizaTela()
         {
+            txtDescricao.Text = "";
+            txtQtde.Value = 0;
+            txtAcresc.Value = 0;
+
             dgvMateriais.DataSource = letraRepositorio.Obter();
             dgvMateriais.Columns[0].Visible = false;
         }
@@ -87,10 +91,6 @@ namespace ControleDeLetras.Forms
             if (retorno == DialogResult.Yes)
             {
                 letraRepositorio.Remover(materialSelecionado.Id);
-
-                txtDescricao.Text = "";
-                txtQtde.Value = 0;
-                txtAcresc.Value = 0;
 
                 AtualizaTela();
             }

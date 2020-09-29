@@ -123,7 +123,6 @@
             // 
             // txtDescricao
             // 
-            this.txtDescricao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDescricao.Location = new System.Drawing.Point(8, 25);
             this.txtDescricao.MaxLength = 30;
             this.txtDescricao.Name = "txtDescricao";
@@ -181,7 +180,7 @@
             this.dgvMateriais.TabIndex = 7;
             this.dgvMateriais.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMateriais_CellClick);
             // 
-            // FrmMateriais
+            // FrmMaterial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -189,7 +188,7 @@
             this.Controls.Add(this.dgvMateriais);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "FrmMateriais";
+            this.Name = "FrmMaterial";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Materiais";
             this.Load += new System.EventHandler(this.FrmLetras_Load);
