@@ -14,8 +14,7 @@ namespace ControleDeLetras
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FrmPalavras());
-            Application.Run(new FrmMateriais());
+            Application.Run(new FrmMain());
         }
     }
 }
