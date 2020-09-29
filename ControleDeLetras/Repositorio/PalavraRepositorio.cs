@@ -42,7 +42,7 @@ namespace ControleDeLetras.Repositorio
             return lstPalavras;
         }
 
-        internal void Remover(int id)
+        internal void Remover(Palavra palavra)
         {
             using (var connection = new SqliteConnection(CriaConexao().ConnectionString))
             {
@@ -51,7 +51,7 @@ namespace ControleDeLetras.Repositorio
                 using (var transaction = connection.BeginTransaction())
                 {
                     var deleteCmd = connection.CreateCommand();
-                    deleteCmd.Parameters.AddWithValue("@id", id);
+                    deleteCmd.Parameters.AddWithValue("@id", palavra.Id);
                     deleteCmd.CommandText = Resource_Queries.PALAVRAS_DELETE;
                     deleteCmd.ExecuteNonQuery();
 
@@ -96,5 +96,6 @@ namespace ControleDeLetras.Repositorio
                 }
             }
         }
+
     }
 }
