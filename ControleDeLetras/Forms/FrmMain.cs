@@ -14,7 +14,7 @@ namespace ControleDeLetras.Forms
         {
             FechaFormAberto();
 
-            FrmMateriais frmMateriais = new FrmMateriais();
+            FrmMaterial frmMateriais = new FrmMaterial();
             frmMateriais.MdiParent = this;
             frmMateriais.Show();
         }
@@ -34,6 +34,15 @@ namespace ControleDeLetras.Forms
             FrmPalavras frmPalavras = new FrmPalavras();
             frmPalavras.MdiParent = this;
             frmPalavras.Show();
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            FechaFormAberto();
+
+            FrmTipo_Material frmTipo_Material = new FrmTipo_Material();
+            frmTipo_Material.MdiParent = this;
+            frmTipo_Material.Show();
         }
     }
 }
