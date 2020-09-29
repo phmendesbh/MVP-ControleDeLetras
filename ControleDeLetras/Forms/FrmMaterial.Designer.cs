@@ -1,6 +1,6 @@
 ﻿namespace ControleDeLetras.Forms
 {
-    partial class FrmMateriais
+    partial class FrmMaterial
     {
         /// <summary>
         /// Required designer variable.

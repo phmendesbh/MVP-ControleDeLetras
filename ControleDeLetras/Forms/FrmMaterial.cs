@@ -5,12 +5,12 @@ using System.Windows.Forms;
 
 namespace ControleDeLetras.Forms
 {
-    public partial class FrmMateriais : Form
+    public partial class FrmMaterial : Form
     {
         readonly MaterialRepositorio letraRepositorio = new MaterialRepositorio();
         private Material materialSelecionado = new Material();
 
-        public FrmMateriais()
+        public FrmMaterial()
         {
             InitializeComponent();
             letraRepositorio.VerificaBanco();
