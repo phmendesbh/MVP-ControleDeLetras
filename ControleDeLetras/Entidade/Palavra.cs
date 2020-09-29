@@ -5,9 +5,11 @@
         public int Id { get; protected set; }
         public string Descricao { get; protected set; }
 
-        public Palavra(int id, string descricao)
+        public string DescricaoAntiga { get; set; }
+
+        public Palavra(int? id, string descricao)
         {
-            Id = id;
+            Id = id == null? int.MinValue: id.Value;
             Descricao = descricao;
         }
     }
