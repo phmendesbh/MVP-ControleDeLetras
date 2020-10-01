@@ -124,16 +124,19 @@
     <value>DELETE FROM material WHERE id = @id</value>
   </data>
   <data name="MATERIAL_INSERT" xml:space="preserve">
-    <value>INSERT INTO material(descricao, quantidade) VALUES(@descricao, @quantidade)</value>
+    <value>INSERT INTO material(descricao, tipo_material_id, quantidade) VALUES(@descricao, @tipo_material_id, @quantidade)</value>
   </data>
   <data name="MATERIAL_SELECT" xml:space="preserve">
-    <value>SELECT id, descricao, quantidade FROM material</value>
+    <value>SELECT id, descricao, tipo_material_id, quantidade FROM material</value>
+  </data>
+  <data name="MATERIAL_SELECT_JOIN_TIPO_MATERIAL" xml:space="preserve">
+    <value>SELECT material.id, material.descricao, material.tipo_material_id, tipo_material.descricao, material.quantidade FROM material INNER JOIN tipo_material ON tipo_material.id = material.tipo_material_id</value>
   </data>
   <data name="MATERIAL_SELECT_POR_ID" xml:space="preserve">
-    <value>SELECT id, descricao, quantidade FROM material WHERE id = @id</value>
+    <value>SELECT id, descricao, tipo_material_id, quantidade FROM material WHERE id = @id</value>
   </data>
   <data name="MATERIAL_UPDATE" xml:space="preserve">
-    <value>UPDATE material SET descricao = @descricao, quantidade = @quantidade WHERE id = @id</value>
+    <value>UPDATE material SET descricao = @descricao, tipo_material_id = @tipo_material_id, quantidade = @quantidade WHERE id = @id</value>
   </data>
   <data name="MATERIAL_UPDATE_QUANTIDADE" xml:space="preserve">
     <value>UPDATE material SET quantidade = quantidade + @quantidade WHERE id = @id</value>

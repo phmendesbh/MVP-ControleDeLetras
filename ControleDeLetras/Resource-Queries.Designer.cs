@@ -79,7 +79,7 @@ namespace ControleDeLetras {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INSERT INTO material(descricao, quantidade) VALUES(@descricao, @quantidade).
+        ///   Looks up a localized string similar to INSERT INTO material(descricao, tipo_material_id, quantidade) VALUES(@descricao, @tipo_material_id, @quantidade).
         /// </summary>
         internal static string MATERIAL_INSERT {
             get {
@@ -88,7 +88,7 @@ namespace ControleDeLetras {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT id, descricao, quantidade FROM material.
+        ///   Looks up a localized string similar to SELECT id, descricao, tipo_material_id, quantidade FROM material.
         /// </summary>
         internal static string MATERIAL_SELECT {
             get {
@@ -97,7 +97,16 @@ namespace ControleDeLetras {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT id, descricao, quantidade FROM material WHERE id = @id.
+        ///   Looks up a localized string similar to SELECT material.id, material.descricao, material.tipo_material_id, tipo_material.descricao, material.quantidade FROM material INNER JOIN tipo_material ON tipo_material.id = material.tipo_material_id.
+        /// </summary>
+        internal static string MATERIAL_SELECT_JOIN_TIPO_MATERIAL {
+            get {
+                return ResourceManager.GetString("MATERIAL_SELECT_JOIN_TIPO_MATERIAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT id, descricao, tipo_material_id, quantidade FROM material WHERE id = @id.
         /// </summary>
         internal static string MATERIAL_SELECT_POR_ID {
             get {
@@ -106,7 +115,7 @@ namespace ControleDeLetras {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to UPDATE material SET descricao = @descricao, quantidade = @quantidade WHERE id = @id.
+        ///   Looks up a localized string similar to UPDATE material SET descricao = @descricao, tipo_material_id = @tipo_material_id, quantidade = @quantidade WHERE id = @id.
         /// </summary>
         internal static string MATERIAL_UPDATE {
             get {

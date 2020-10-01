@@ -9,6 +9,8 @@
 
         public int Id { get; set; }
         public string Descricao { get; set; }
+        public int Tipo_Material_Id { get; set; }
+        public string Tipo_Material_Descricao { get; set; }
         public int Quantidade { get; set; }
     }
 }
