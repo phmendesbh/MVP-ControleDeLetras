@@ -1,5 +1,6 @@
 ﻿using ControleDeLetras.Entidade;
 using ControleDeLetras.Interface;
+using ControleDeLetras.Repositorio.Queries;
 using Microsoft.Data.Sqlite;
 using System.Collections.Generic;
 
@@ -19,7 +20,7 @@ namespace ControleDeLetras.Repositorio
                 connection.Open();
 
                 var tableCmd = connection.CreateCommand();
-                tableCmd.CommandText = Resource_Queries.TIPO_MATERIAL_CREATE_TABLE;
+                tableCmd.CommandText = Resource_CRUD.TIPO_MATERIAL_CREATE_TABLE;
                 tableCmd.ExecuteNonQuery();
             }
         }
@@ -33,7 +34,7 @@ namespace ControleDeLetras.Repositorio
                 connection.Open();
 
                 var selectCmd = connection.CreateCommand();
-                selectCmd.CommandText = Resource_Queries.TIPO_MATERIAL_SELECT;
+                selectCmd.CommandText = Resource_CRUD.TIPO_MATERIAL_SELECT;
 
                 using (var reader = selectCmd.ExecuteReader())
                 {
@@ -60,7 +61,7 @@ namespace ControleDeLetras.Repositorio
                 connection.Open();
 
                 var selectCmd = connection.CreateCommand();
-                selectCmd.CommandText = Resource_Queries.TIPO_MATERIAL_SELECT_POR_ID;
+                selectCmd.CommandText = Resource_CRUD.TIPO_MATERIAL_SELECT_POR_ID;
                 selectCmd.Parameters.Add(new SqliteParameter("@id", id));
 
                 using (var reader = selectCmd.ExecuteReader())
@@ -89,7 +90,7 @@ namespace ControleDeLetras.Repositorio
                 {
                     var deleteCmd = connection.CreateCommand();
                     deleteCmd.Parameters.AddWithValue("@id", id);
-                    deleteCmd.CommandText = Resource_Queries.TIPO_MATERIAL_DELETE;
+                    deleteCmd.CommandText = Resource_CRUD.TIPO_MATERIAL_DELETE;
                     deleteCmd.ExecuteNonQuery();
 
                     transaction.Commit();
@@ -107,7 +108,7 @@ namespace ControleDeLetras.Repositorio
                 {
                     var insertCmd = connection.CreateCommand();
                     insertCmd.Parameters.Add(new SqliteParameter("@descricao", tipo_Material.Descricao));
-                    insertCmd.CommandText = Resource_Queries.TIPO_MATERIAL_INSERT;
+                    insertCmd.CommandText = Resource_CRUD.TIPO_MATERIAL_INSERT;
                     insertCmd.ExecuteNonQuery();
 
                     transaction.Commit();
@@ -126,7 +127,7 @@ namespace ControleDeLetras.Repositorio
                     var updateCmd = connection.CreateCommand();
                     updateCmd.Parameters.AddWithValue("@id", tipo_Material.Id);
                     updateCmd.Parameters.AddWithValue("@descricao", tipo_Material.Descricao);
-                    updateCmd.CommandText = Resource_Queries.TIPO_MATERIAL_UPDATE;
+                    updateCmd.CommandText = Resource_CRUD.TIPO_MATERIAL_UPDATE;
                     updateCmd.ExecuteNonQuery();
 
                     transaction.Commit();
