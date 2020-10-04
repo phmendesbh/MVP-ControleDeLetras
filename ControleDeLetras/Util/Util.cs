@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace ControleDeLetras.Util
 {
@@ -9,6 +10,16 @@ namespace ControleDeLetras.Util
             Negativo = -1,
             Zero = 0,
             Positivo = 1
+        }
+
+        public enum Acao
+        {
+            Default,
+            Novo,
+            Alterar,
+            Apagar,
+            Salvar,
+            Cancelar
         }
     }
 

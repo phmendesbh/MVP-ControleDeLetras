@@ -29,6 +29,15 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlBotoes = new System.Windows.Forms.Panel();
+            this.btnSalvar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnApagar = new System.Windows.Forms.Button();
+            this.btnAlterar = new System.Windows.Forms.Button();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.lblCor = new System.Windows.Forms.Label();
+            this.pnlCor = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.cmbTipoMaterial = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtAcresc = new System.Windows.Forms.NumericUpDown();
@@ -37,12 +46,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
-            this.btnRemover = new System.Windows.Forms.Button();
-            this.btnAlterar = new System.Windows.Forms.Button();
             this.btnAcresc = new System.Windows.Forms.Button();
-            this.btnAdicionar = new System.Windows.Forms.Button();
             this.dgvMateriais = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
+            this.pnlBotoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtAcresc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQtde)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMateriais)).BeginInit();
@@ -51,6 +58,10 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.pnlBotoes);
+            this.panel1.Controls.Add(this.lblCor);
+            this.panel1.Controls.Add(this.pnlCor);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.cmbTipoMaterial);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtAcresc);
@@ -59,14 +70,97 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtDescricao);
-            this.panel1.Controls.Add(this.btnRemover);
-            this.panel1.Controls.Add(this.btnAlterar);
             this.panel1.Controls.Add(this.btnAcresc);
-            this.panel1.Controls.Add(this.btnAdicionar);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(418, 142);
             this.panel1.TabIndex = 8;
+            // 
+            // pnlBotoes
+            // 
+            this.pnlBotoes.Controls.Add(this.btnSalvar);
+            this.pnlBotoes.Controls.Add(this.btnCancelar);
+            this.pnlBotoes.Controls.Add(this.btnApagar);
+            this.pnlBotoes.Controls.Add(this.btnAlterar);
+            this.pnlBotoes.Controls.Add(this.btnNovo);
+            this.pnlBotoes.Location = new System.Drawing.Point(-1, 110);
+            this.pnlBotoes.Name = "pnlBotoes";
+            this.pnlBotoes.Size = new System.Drawing.Size(417, 27);
+            this.pnlBotoes.TabIndex = 18;
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Location = new System.Drawing.Point(284, 2);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(62, 23);
+            this.btnSalvar.TabIndex = 22;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(352, 2);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(62, 23);
+            this.btnCancelar.TabIndex = 21;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnApagar
+            // 
+            this.btnApagar.Location = new System.Drawing.Point(139, 2);
+            this.btnApagar.Name = "btnApagar";
+            this.btnApagar.Size = new System.Drawing.Size(62, 23);
+            this.btnApagar.TabIndex = 20;
+            this.btnApagar.Text = "Apagar";
+            this.btnApagar.UseVisualStyleBackColor = true;
+            // 
+            // btnAlterar
+            // 
+            this.btnAlterar.Location = new System.Drawing.Point(72, 2);
+            this.btnAlterar.Name = "btnAlterar";
+            this.btnAlterar.Size = new System.Drawing.Size(62, 23);
+            this.btnAlterar.TabIndex = 19;
+            this.btnAlterar.Text = "Alterar";
+            this.btnAlterar.UseVisualStyleBackColor = true;
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.Location = new System.Drawing.Point(4, 2);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(62, 23);
+            this.btnNovo.TabIndex = 18;
+            this.btnNovo.Text = "Novo";
+            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            // 
+            // lblCor
+            // 
+            this.lblCor.Location = new System.Drawing.Point(75, 70);
+            this.lblCor.Name = "lblCor";
+            this.lblCor.Size = new System.Drawing.Size(131, 21);
+            this.lblCor.TabIndex = 15;
+            this.lblCor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pnlCor
+            // 
+            this.pnlCor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlCor.Location = new System.Drawing.Point(9, 70);
+            this.pnlCor.Name = "pnlCor";
+            this.pnlCor.Size = new System.Drawing.Size(60, 21);
+            this.pnlCor.TabIndex = 14;
+            this.pnlCor.Tag = "Selecione a cor";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 53);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(23, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Cor";
             // 
             // cmbTipoMaterial
             // 
@@ -87,7 +181,7 @@
             // 
             // txtAcresc
             // 
-            this.txtAcresc.Location = new System.Drawing.Point(72, 70);
+            this.txtAcresc.Location = new System.Drawing.Point(283, 70);
             this.txtAcresc.Maximum = new decimal(new int[] {
             999,
             0,
@@ -105,7 +199,7 @@
             // 
             // txtQtde
             // 
-            this.txtQtde.Location = new System.Drawing.Point(8, 70);
+            this.txtQtde.Location = new System.Drawing.Point(219, 70);
             this.txtQtde.Maximum = new decimal(new int[] {
             999,
             0,
@@ -118,7 +212,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(56, 74);
+            this.label3.Location = new System.Drawing.Point(267, 74);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(13, 13);
             this.label3.TabIndex = 6;
@@ -127,7 +221,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 54);
+            this.label2.Location = new System.Drawing.Point(221, 54);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 13);
             this.label2.TabIndex = 6;
@@ -144,52 +238,22 @@
             // 
             // txtDescricao
             // 
-            this.txtDescricao.Location = new System.Drawing.Point(8, 25);
+            this.txtDescricao.Location = new System.Drawing.Point(9, 23);
             this.txtDescricao.MaxLength = 30;
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(197, 20);
             this.txtDescricao.TabIndex = 0;
             // 
-            // btnRemover
-            // 
-            this.btnRemover.Location = new System.Drawing.Point(346, 114);
-            this.btnRemover.Name = "btnRemover";
-            this.btnRemover.Size = new System.Drawing.Size(62, 23);
-            this.btnRemover.TabIndex = 6;
-            this.btnRemover.Text = "Remover";
-            this.btnRemover.UseVisualStyleBackColor = true;
-            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
-            // 
-            // btnAlterar
-            // 
-            this.btnAlterar.Location = new System.Drawing.Point(279, 114);
-            this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(62, 23);
-            this.btnAlterar.TabIndex = 5;
-            this.btnAlterar.Text = "Modificar";
-            this.btnAlterar.UseVisualStyleBackColor = true;
-            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
-            // 
             // btnAcresc
             // 
             this.btnAcresc.Enabled = false;
-            this.btnAcresc.Location = new System.Drawing.Point(121, 70);
+            this.btnAcresc.Location = new System.Drawing.Point(332, 70);
             this.btnAcresc.Name = "btnAcresc";
             this.btnAcresc.Size = new System.Drawing.Size(72, 23);
             this.btnAcresc.TabIndex = 3;
             this.btnAcresc.Text = "Acrescentar";
             this.btnAcresc.UseVisualStyleBackColor = true;
             this.btnAcresc.Click += new System.EventHandler(this.btnAcresc_Click);
-            // 
-            // btnAdicionar
-            // 
-            this.btnAdicionar.Location = new System.Drawing.Point(211, 114);
-            this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(62, 23);
-            this.btnAdicionar.TabIndex = 4;
-            this.btnAdicionar.Text = "Adicionar";
-            this.btnAdicionar.UseVisualStyleBackColor = true;
-            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
             // dgvMateriais
             // 
@@ -215,6 +279,7 @@
             this.Load += new System.EventHandler(this.FrmLetras_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.pnlBotoes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtAcresc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQtde)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMateriais)).EndInit();
@@ -227,9 +292,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtDescricao;
-        private System.Windows.Forms.Button btnRemover;
-        private System.Windows.Forms.Button btnAlterar;
-        private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.DataGridView dgvMateriais;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -238,5 +300,14 @@
         private System.Windows.Forms.NumericUpDown txtQtde;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbTipoMaterial;
+        private System.Windows.Forms.Label lblCor;
+        private System.Windows.Forms.Panel pnlCor;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel pnlBotoes;
+        private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnApagar;
+        private System.Windows.Forms.Button btnAlterar;
+        private System.Windows.Forms.Button btnNovo;
     }
 }
