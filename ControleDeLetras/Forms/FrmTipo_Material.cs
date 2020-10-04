@@ -1,13 +1,6 @@
 ﻿using ControleDeLetras.Entidade;
 using ControleDeLetras.Repositorio;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ControleDeLetras.Forms
@@ -20,8 +13,6 @@ namespace ControleDeLetras.Forms
         public FrmTipo_Material()
         {
             InitializeComponent();
-            Tipo_MaterialRepositorio.VerificaBanco();
-
         }
 
         private void FrmTipo_Material_Load(object sender, EventArgs e)

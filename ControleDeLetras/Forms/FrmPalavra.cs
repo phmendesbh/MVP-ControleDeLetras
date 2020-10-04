@@ -19,7 +19,6 @@ namespace ControleDeLetras
         public FrmPalavras()
         {
             InitializeComponent();
-            PalavraRepositorio.VerificaBanco();
         }
 
         private void FrmPalavras_Load(object sender, EventArgs e)

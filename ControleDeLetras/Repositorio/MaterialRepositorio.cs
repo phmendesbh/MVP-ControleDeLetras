@@ -12,6 +12,11 @@ namespace ControleDeLetras.Repositorio
     {
         readonly Utils utils = new Utils();
 
+        public MaterialRepositorio()
+        {
+            VerificaBanco();
+        }
+
         public void VerificaBanco()
         {
             using (var connection = new SqliteConnection(CriaConexao().ConnectionString))
@@ -22,28 +27,6 @@ namespace ControleDeLetras.Repositorio
                 tableCmd.CommandText = Resource_Queries.MATERIAL_CREATE_TABLE;
                 tableCmd.ExecuteNonQuery();
             }
-
-            VerificaInsereTodasAsLetras();
-        }
-
-        private void VerificaInsereTodasAsLetras()
-        {
-            string letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-            if (Obter().Count == 0)
-            {
-
-                foreach (var letra in letras.ToCharArray())
-                {
-                    Inserir(new Material()
-                    {
-                        Descricao = letra.ToString(),
-                        Tipo_Material_Id = 1,
-                        Quantidade = 0
-                    });
-                }
-            }
-
         }
 
         internal void AlterarQuantidade(int idSelecionado, decimal value)

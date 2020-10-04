@@ -8,6 +8,10 @@ namespace ControleDeLetras.Forms
         public FrmMain()
         {
             InitializeComponent();
+
+#if DEBUG
+            Repositorio.RepositorioMontaDados montaDados = new Repositorio.RepositorioMontaDados();
+#endif
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)

@@ -7,6 +7,11 @@ namespace ControleDeLetras.Repositorio
 {
     class Tipo_MaterialRepositorio : RepositorioBase, IRepos
     {
+        public Tipo_MaterialRepositorio()
+        {
+            VerificaBanco();
+        }
+
         public void VerificaBanco()
         {
             using (var connection = new SqliteConnection(CriaConexao().ConnectionString))
@@ -16,8 +21,6 @@ namespace ControleDeLetras.Repositorio
                 var tableCmd = connection.CreateCommand();
                 tableCmd.CommandText = Resource_Queries.TIPO_MATERIAL_CREATE_TABLE;
                 tableCmd.ExecuteNonQuery();
-
-                VerificaInsereTodasAsLetras();
             }
         }
 
@@ -129,17 +132,6 @@ namespace ControleDeLetras.Repositorio
                     transaction.Commit();
                 }
             }
-        }
-        private void VerificaInsereTodasAsLetras()
-        {
-            if (Obter().Count == 0)
-            {
-                    Inserir(new Tipo_Material()
-                    {
-                        Descricao = "Letra",
-                    });
-            }
-
         }
     }
 }

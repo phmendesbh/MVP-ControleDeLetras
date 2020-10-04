@@ -18,7 +18,6 @@ namespace ControleDeLetras.Forms
         public FrmMaterial()
         {
             InitializeComponent();
-            letraRepositorio.VerificaBanco();
         }
 
         private void FrmLetras_Load(object sender, EventArgs e)

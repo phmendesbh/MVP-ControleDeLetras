@@ -7,6 +7,11 @@ namespace ControleDeLetras.Repositorio
 {
     public class PalavraRepositorio: RepositorioBase, IRepos
     {
+        public PalavraRepositorio()
+        {
+            VerificaBanco();
+        }
+
         public void VerificaBanco()
         {
             using (var connection = new SqliteConnection(CriaConexao().ConnectionString))
