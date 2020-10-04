@@ -12,6 +12,7 @@ namespace ControleDeLetras.Repositorio
     public class MaterialRepositorio : RepositorioBase, IRepos
     {
         readonly Utils utils = new Utils();
+        readonly Material_Queries Queries = new Material_Queries();
 
         public MaterialRepositorio()
         {
@@ -58,7 +59,7 @@ namespace ControleDeLetras.Repositorio
                 connection.Open();
 
                 var selectCmd = connection.CreateCommand();
-                selectCmd.CommandText = Resource_CRUD.MATERIAL_SELECT_JOIN_TIPO_MATERIAL;
+                selectCmd.CommandText = Queries.SELECT_JOIN_TIPO_MATERIAL;
 
                 using (var reader = selectCmd.ExecuteReader())
                 {
@@ -70,7 +71,10 @@ namespace ControleDeLetras.Repositorio
                             Descricao = reader.GetString(1),
                             Tipo_Material_Id = reader.GetInt32(2),
                             Tipo_Material_Descricao = reader.GetString(3),
-                            Quantidade = reader.GetInt32(4)
+                            Quantidade = reader.GetInt32(4),
+                            Cor_Id = reader.GetInt32(5),
+                            Cor_Descricao = reader.GetString(6),
+                            Cor_ValorARGB = reader.GetInt32(7)
                         });
                     }
                 }

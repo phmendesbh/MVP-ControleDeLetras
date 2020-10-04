@@ -106,7 +106,7 @@ namespace ControleDeLetras.Repositorio.Queries {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CREATE TABLE IF NOT EXISTS material(id INTEGER PRIMARY KEY, descricao VARCHAR(30), tipo_material_id INTEGER, quantidade INTEGER, FOREIGN KEY(tipo_material_id) REFERENCES tipo_material(id)).
+        ///   Looks up a localized string similar to CREATE TABLE IF NOT EXISTS material(id INTEGER PRIMARY KEY, descricao VARCHAR(30), tipo_material_id INTEGER, cor_id INTEGER, quantidade INTEGER, FOREIGN KEY(tipo_material_id) REFERENCES tipo_material(id), FOREIGN KEY(cor_id) REFERENCES cor(id)).
         /// </summary>
         internal static string MATERIAL_CREATE_TABLE {
             get {
@@ -133,7 +133,7 @@ namespace ControleDeLetras.Repositorio.Queries {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT id, descricao, tipo_material_id, quantidade FROM material.
+        ///   Looks up a localized string similar to SELECT id, descricao, tipo_material_id, cor_id, quantidade FROM material.
         /// </summary>
         internal static string MATERIAL_SELECT {
             get {
@@ -142,16 +142,7 @@ namespace ControleDeLetras.Repositorio.Queries {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT material.id, material.descricao, material.tipo_material_id, tipo_material.descricao, material.quantidade FROM material INNER JOIN tipo_material ON tipo_material.id = material.tipo_material_id.
-        /// </summary>
-        internal static string MATERIAL_SELECT_JOIN_TIPO_MATERIAL {
-            get {
-                return ResourceManager.GetString("MATERIAL_SELECT_JOIN_TIPO_MATERIAL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SELECT id, descricao, tipo_material_id, quantidade FROM material WHERE id = @id.
+        ///   Looks up a localized string similar to SELECT id, descricao, tipo_material_id, cor_id, quantidade FROM material WHERE id = @id.
         /// </summary>
         internal static string MATERIAL_SELECT_POR_ID {
             get {
@@ -160,7 +151,7 @@ namespace ControleDeLetras.Repositorio.Queries {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to UPDATE material SET descricao = @descricao, tipo_material_id = @tipo_material_id, quantidade = @quantidade WHERE id = @id.
+        ///   Looks up a localized string similar to UPDATE material SET descricao = @descricao, tipo_material_id = @tipo_material_id, cor_id, quantidade = @quantidade WHERE id = @id.
         /// </summary>
         internal static string MATERIAL_UPDATE {
             get {

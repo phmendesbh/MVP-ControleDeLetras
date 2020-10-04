@@ -133,7 +133,7 @@
     <value>UPDATE cor SET descricao = @descricao, valorARGB = @valorARGB WHERE id = @id</value>
   </data>
   <data name="MATERIAL_CREATE_TABLE" xml:space="preserve">
-    <value>CREATE TABLE IF NOT EXISTS material(id INTEGER PRIMARY KEY, descricao VARCHAR(30), tipo_material_id INTEGER, quantidade INTEGER, FOREIGN KEY(tipo_material_id) REFERENCES tipo_material(id))</value>
+    <value>CREATE TABLE IF NOT EXISTS material(id INTEGER PRIMARY KEY, descricao VARCHAR(30), tipo_material_id INTEGER, cor_id INTEGER, quantidade INTEGER, FOREIGN KEY(tipo_material_id) REFERENCES tipo_material(id), FOREIGN KEY(cor_id) REFERENCES cor(id))</value>
   </data>
   <data name="MATERIAL_DELETE" xml:space="preserve">
     <value>DELETE FROM material WHERE id = @id</value>
@@ -142,16 +142,13 @@
     <value>INSERT INTO material(descricao, tipo_material_id, quantidade) VALUES(@descricao, @tipo_material_id, @quantidade)</value>
   </data>
   <data name="MATERIAL_SELECT" xml:space="preserve">
-    <value>SELECT id, descricao, tipo_material_id, quantidade FROM material</value>
-  </data>
-  <data name="MATERIAL_SELECT_JOIN_TIPO_MATERIAL" xml:space="preserve">
-    <value>SELECT material.id, material.descricao, material.tipo_material_id, tipo_material.descricao, material.quantidade FROM material INNER JOIN tipo_material ON tipo_material.id = material.tipo_material_id</value>
+    <value>SELECT id, descricao, tipo_material_id, cor_id, quantidade FROM material</value>
   </data>
   <data name="MATERIAL_SELECT_POR_ID" xml:space="preserve">
-    <value>SELECT id, descricao, tipo_material_id, quantidade FROM material WHERE id = @id</value>
+    <value>SELECT id, descricao, tipo_material_id, cor_id, quantidade FROM material WHERE id = @id</value>
   </data>
   <data name="MATERIAL_UPDATE" xml:space="preserve">
-    <value>UPDATE material SET descricao = @descricao, tipo_material_id = @tipo_material_id, quantidade = @quantidade WHERE id = @id</value>
+    <value>UPDATE material SET descricao = @descricao, tipo_material_id = @tipo_material_id, cor_id, quantidade = @quantidade WHERE id = @id</value>
   </data>
   <data name="MATERIAL_UPDATE_QUANTIDADE" xml:space="preserve">
     <value>UPDATE material SET quantidade = quantidade + @quantidade WHERE id = @id</value>
