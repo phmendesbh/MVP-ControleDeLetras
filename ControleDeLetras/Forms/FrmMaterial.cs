@@ -84,9 +84,13 @@ namespace ControleDeLetras.Forms
 
             if (cmbTipoMaterial.Items.Count == 0) PreencheCombo();
 
-            dgvMateriais.DataSource = letraRepositorio.Obter();
-            dgvMateriais.Columns[0].Visible = false;
-            dgvMateriais.Columns[2].Visible = false;
+            dgvMateriais.DataSource = letraRepositorio.ObterTodasInformacoes();
+            dgvMateriais.Columns["Id"].Visible = false;
+            dgvMateriais.Columns["Tipo_Material_Id"].Visible = false;
+            dgvMateriais.Columns["Cor_Id"].Visible = false;
+            dgvMateriais.Columns["Cor_ValorARGB"].Visible = false;
+
+            AtivarBotoes(Acao);
         }
 
         private void LimpaCampos()
@@ -114,16 +118,19 @@ namespace ControleDeLetras.Forms
 
         private void AtualizaObjetos()
         {
-            materialSelecionado.Id = (int)dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells[0].Value;
-            materialSelecionado.Descricao = dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells[1].Value.ToString();
-            materialSelecionado.Tipo_Material_Id = (int)dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells[2].Value;
-            materialSelecionado.Tipo_Material_Descricao = dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells[3].Value.ToString();
-            materialSelecionado.Quantidade = (int)dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells[4].Value;
+            materialSelecionado.Id = (int)dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells["Id"].Value;
+            materialSelecionado.Descricao = dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells["Descricao"].Value.ToString();
+            materialSelecionado.Tipo_Material_Id = (int)dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells["Tipo_Material_Id"].Value;
+            materialSelecionado.Tipo_Material_Descricao = dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells["Tipo_Material_Descricao"].Value.ToString();
+            materialSelecionado.Cor_Id = (int)dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells["Cor_Id"].Value;
+            materialSelecionado.Quantidade = (int)dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells["Quantidade"].Value;
 
             txtDescricao.Text = materialSelecionado.Descricao;
             cmbTipoMaterial.SelectedValue = materialSelecionado.Tipo_Material_Id;
             txtQtde.Value = materialSelecionado.Quantidade;
             txtAcresc.Value = 0;
+            pnlCor.BackColor = Color.FromArgb((int)dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells["Cor_ValorARGB"].Value);
+            lblCor.Text = dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells["Cor_Descricao"].Value.ToString();
         }
 
         private void AcaoBotoes(Enumeradores.Acao acao)
@@ -155,7 +162,8 @@ namespace ControleDeLetras.Forms
                             Id = materialSelecionado.Id,
                             Descricao = txtDescricao.Text,
                             Tipo_Material_Id = (int)cmbTipoMaterial.SelectedValue,
-                            Quantidade = (int)txtQtde.Value
+                            Quantidade = (int)txtQtde.Value,
+                            Cor_Id = materialSelecionado.Cor_Id
                         });
                     }
                     break;
