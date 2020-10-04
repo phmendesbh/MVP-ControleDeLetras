@@ -117,6 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="COR_CREATE_TABLE" xml:space="preserve">
+    <value>CREATE TABLE IF NOT EXISTS cor(id INTEGER PRIMARY KEY, descricao VARCHAR(30))</value>
+  </data>
+  <data name="COR_DELETE" xml:space="preserve">
+    <value>DELETE FROM cor WHERE id = @id</value>
+  </data>
+  <data name="COR_INSERT" xml:space="preserve">
+    <value>INSERT INTO cor(descricao) VALUES(@descricao)</value>
+  </data>
+  <data name="COR_SELECT" xml:space="preserve">
+    <value>SELECT id, descricao FROM cor</value>
+  </data>
+  <data name="COR_UPDATE" xml:space="preserve">
+    <value>UPDATE cor SET descricao = @descricao WHERE id = @id</value>
+  </data>
   <data name="MATERIAL_CREATE_TABLE" xml:space="preserve">
     <value>CREATE TABLE IF NOT EXISTS material(id INTEGER PRIMARY KEY, descricao VARCHAR(30), tipo_material_id INTEGER, quantidade INTEGER, FOREIGN KEY(tipo_material_id) REFERENCES tipo_material(id))</value>
   </data>
@@ -141,20 +156,20 @@
   <data name="MATERIAL_UPDATE_QUANTIDADE" xml:space="preserve">
     <value>UPDATE material SET quantidade = quantidade + @quantidade WHERE id = @id</value>
   </data>
-  <data name="PALAVRAS_CREATE_TABLE" xml:space="preserve">
-    <value>CREATE TABLE IF NOT EXISTS palavras(id INTEGER PRIMARY KEY, descricao VARCHAR(15))</value>
+  <data name="PALAVRA_CREATE_TABLE" xml:space="preserve">
+    <value>CREATE TABLE IF NOT EXISTS palavra(id INTEGER PRIMARY KEY, descricao VARCHAR(15))</value>
   </data>
-  <data name="PALAVRAS_DELETE" xml:space="preserve">
-    <value>DELETE FROM palavras WHERE id = @id</value>
+  <data name="PALAVRA_DELETE" xml:space="preserve">
+    <value>DELETE FROM palavra WHERE id = @id</value>
   </data>
-  <data name="PALAVRAS_INSERT" xml:space="preserve">
-    <value>INSERT INTO palavras (descricao) VALUES(@descricao)</value>
+  <data name="PALAVRA_INSERT" xml:space="preserve">
+    <value>INSERT INTO palavra (descricao) VALUES(@descricao)</value>
   </data>
-  <data name="PALAVRAS_SELECT" xml:space="preserve">
-    <value>SELECT id, descricao FROM palavras</value>
+  <data name="PALAVRA_SELECT" xml:space="preserve">
+    <value>SELECT id, descricao FROM palavra</value>
   </data>
-  <data name="PALAVRAS_UPDATE" xml:space="preserve">
-    <value>UPDATE palavras SET descricao = @descricao WHERE id = @id</value>
+  <data name="PALAVRA_UPDATE" xml:space="preserve">
+    <value>UPDATE palavra SET descricao = @descricao WHERE id = @id</value>
   </data>
   <data name="TIPO_MATERIAL_CREATE_TABLE" xml:space="preserve">
     <value>CREATE TABLE IF NOT EXISTS tipo_material(id INTEGER PRIMARY KEY, descricao VARCHAR(30))</value>
