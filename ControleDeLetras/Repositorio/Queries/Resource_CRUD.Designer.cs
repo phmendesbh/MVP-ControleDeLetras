@@ -61,7 +61,7 @@ namespace ControleDeLetras.Repositorio.Queries {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CREATE TABLE IF NOT EXISTS cor(id INTEGER PRIMARY KEY, descricao VARCHAR(30)).
+        ///   Looks up a localized string similar to CREATE TABLE IF NOT EXISTS cor(id INTEGER PRIMARY KEY, descricao VARCHAR(30), valorARGB INTEGER).
         /// </summary>
         internal static string COR_CREATE_TABLE {
             get {
@@ -79,7 +79,7 @@ namespace ControleDeLetras.Repositorio.Queries {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INSERT INTO cor(descricao) VALUES(@descricao).
+        ///   Looks up a localized string similar to INSERT INTO cor(descricao, valorARGB) VALUES(@descricao, @valorARGB).
         /// </summary>
         internal static string COR_INSERT {
             get {
@@ -88,7 +88,7 @@ namespace ControleDeLetras.Repositorio.Queries {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT id, descricao FROM cor.
+        ///   Looks up a localized string similar to SELECT id, descricao, valorARGB FROM cor.
         /// </summary>
         internal static string COR_SELECT {
             get {
@@ -97,7 +97,7 @@ namespace ControleDeLetras.Repositorio.Queries {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to UPDATE cor SET descricao = @descricao WHERE id = @id.
+        ///   Looks up a localized string similar to UPDATE cor SET descricao = @descricao, valorARGB = @valorARGB WHERE id = @id.
         /// </summary>
         internal static string COR_UPDATE {
             get {

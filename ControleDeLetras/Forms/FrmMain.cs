@@ -48,5 +48,14 @@ namespace ControleDeLetras.Forms
             frmTipo_Material.MdiParent = this;
             frmTipo_Material.Show();
         }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            FechaFormAberto();
+
+            FrmCor frmCor = new FrmCor();
+            frmCor.MdiParent = this;
+            frmCor.Show();
+        }
     }
 }

@@ -180,6 +180,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entidade\Cor.cs" />
     <Compile Include="Entidade\Material.cs" />
     <Compile Include="Entidade\Palavra.cs" />
     <Compile Include="Entidade\Tipo_Material.cs" />
@@ -189,6 +190,14 @@
     <Compile Include="Forms\FrmTipo_Material.Designer.cs">
       <DependentUpon>FrmTipo_Material.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmCor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmCor.Designer.cs">
+      <DependentUpon>FrmCor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositorio\CorRepositorio.cs" />
+    <Compile Include="Repositorio\RepositorioMontaDados.cs" />
     <Compile Include="Repositorio\Tipo_MaterialRepositorio.cs" />
     <Compile Include="Util\Util.cs" />
     <Compile Include="Forms\FrmMain.cs">
@@ -215,10 +224,10 @@
     <Compile Include="Repositorio\RepositorioBase.cs" />
     <Compile Include="Repositorio\MaterialRepositorio.cs" />
     <Compile Include="Repositorio\PalavraRepositorio.cs" />
-    <Compile Include="Resource-Queries.Designer.cs">
+    <Compile Include="Repositorio\Queries\Resource_CRUD.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Resource-Queries.resx</DependentUpon>
+      <DependentUpon>Resource_CRUD.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
@@ -232,6 +241,9 @@
     <EmbeddedResource Include="Forms\FrmTipo_Material.resx">
       <DependentUpon>FrmTipo_Material.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmCor.resx">
+      <DependentUpon>FrmCor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -241,9 +253,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Resource-Queries.resx">
+    <EmbeddedResource Include="Repositorio\Queries\Resource_CRUD.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource-Queries.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resource_CRUD.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
