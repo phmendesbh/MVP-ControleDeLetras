@@ -38,6 +38,7 @@ namespace ControleDeLetras.Repositorio
                     Inserir(new Material()
                     {
                         Descricao = letra.ToString(),
+                        Tipo_Material_Id = 1,
                         Quantidade = 0
                     });
                 }
@@ -73,7 +74,7 @@ namespace ControleDeLetras.Repositorio
                 connection.Open();
 
                 var selectCmd = connection.CreateCommand();
-                selectCmd.CommandText = Resource_Queries.MATERIAL_SELECT;
+                selectCmd.CommandText = Resource_Queries.MATERIAL_SELECT_JOIN_TIPO_MATERIAL;
 
                 using (var reader = selectCmd.ExecuteReader())
                 {
@@ -82,8 +83,10 @@ namespace ControleDeLetras.Repositorio
                         letras.Add(new Material() {
                             Id = reader.GetInt32(0),
                             Descricao = reader.GetString(1),
-                            Quantidade = reader.GetInt32(2)
-                            });
+                            Tipo_Material_Id = reader.GetInt32(2),
+                            Tipo_Material_Descricao = reader.GetString(3),
+                            Quantidade = reader.GetInt32(4)
+                        });; ;
                     }
                 }
             }
@@ -170,6 +173,7 @@ namespace ControleDeLetras.Repositorio
                 {
                     var insertCmd = connection.CreateCommand();
                     insertCmd.Parameters.Add(new SqliteParameter("@descricao", letra.Descricao));
+                    insertCmd.Parameters.Add(new SqliteParameter("@tipo_material_id", letra.Tipo_Material_Id));
                     insertCmd.Parameters.Add(new SqliteParameter("@quantidade", letra.Quantidade));
                     insertCmd.CommandText = Resource_Queries.MATERIAL_INSERT;
                     insertCmd.ExecuteNonQuery();
@@ -190,6 +194,7 @@ namespace ControleDeLetras.Repositorio
                     var updateCmd = connection.CreateCommand();
                     updateCmd.Parameters.AddWithValue("@id", letra.Id);
                     updateCmd.Parameters.AddWithValue("@descricao", letra.Descricao);
+                    updateCmd.Parameters.AddWithValue("@tipo_material_id", letra.Tipo_Material_Id);
                     updateCmd.Parameters.AddWithValue("@quantidade", letra.Quantidade);
                     updateCmd.CommandText = Resource_Queries.MATERIAL_UPDATE;
                     updateCmd.ExecuteNonQuery();

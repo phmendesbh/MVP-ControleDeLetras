@@ -1,16 +1,21 @@
 ﻿using ControleDeLetras.Entidade;
 using ControleDeLetras.Repositorio;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ControleDeLetras.Forms
 {
-    public partial class FrmMateriais : Form
+    public partial class FrmMaterial : Form
     {
         readonly MaterialRepositorio letraRepositorio = new MaterialRepositorio();
+        readonly Tipo_MaterialRepositorio tipo_MaterialRepositorio = new Tipo_MaterialRepositorio();
+
         private Material materialSelecionado = new Material();
 
-        public FrmMateriais()
+        public FrmMaterial()
         {
             InitializeComponent();
             letraRepositorio.VerificaBanco();
@@ -23,8 +28,22 @@ namespace ControleDeLetras.Forms
 
         private void AtualizaTela()
         {
+            txtDescricao.Text = "";
+            txtQtde.Value = 0;
+            txtAcresc.Value = 0;
+
+            if (cmbTipoMaterial.Items.Count == 0) PreencheCombo();
+
             dgvMateriais.DataSource = letraRepositorio.Obter();
             dgvMateriais.Columns[0].Visible = false;
+            dgvMateriais.Columns[2].Visible = false;
+        }
+
+        private void PreencheCombo()
+        {
+            cmbTipoMaterial.DataSource = tipo_MaterialRepositorio.Obter();
+            cmbTipoMaterial.ValueMember = "Id";
+            cmbTipoMaterial.DisplayMember = "Descricao";
         }
 
         private void txtAcresc_ValueChanged(object sender, EventArgs e)
@@ -54,6 +73,7 @@ namespace ControleDeLetras.Forms
                 letraRepositorio.Inserir(new Material()
                 {
                     Descricao = txtDescricao.Text,
+                    Tipo_Material_Id = (int)cmbTipoMaterial.SelectedValue,
                     Quantidade = (int)txtQtde.Value
                 });
                 AtualizaTela();
@@ -72,6 +92,7 @@ namespace ControleDeLetras.Forms
                 {
                     Id = materialSelecionado.Id,
                     Descricao = txtDescricao.Text,
+                    Tipo_Material_Id = (int)cmbTipoMaterial.SelectedValue,
                     Quantidade = (int)txtQtde.Value
                 });
                 AtualizaTela();
@@ -88,10 +109,6 @@ namespace ControleDeLetras.Forms
             {
                 letraRepositorio.Remover(materialSelecionado.Id);
 
-                txtDescricao.Text = "";
-                txtQtde.Value = 0;
-                txtAcresc.Value = 0;
-
                 AtualizaTela();
             }
         }
@@ -105,11 +122,15 @@ namespace ControleDeLetras.Forms
         {
             materialSelecionado.Id = (int)dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells[0].Value;
             materialSelecionado.Descricao = dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells[1].Value.ToString();
-            materialSelecionado.Quantidade = (int)dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells[2].Value;
+            materialSelecionado.Tipo_Material_Id = (int)dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells[2].Value;
+            materialSelecionado.Tipo_Material_Descricao = dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells[3].Value.ToString();
+            materialSelecionado.Quantidade = (int)dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells[4].Value;
 
             txtDescricao.Text = materialSelecionado.Descricao;
+            cmbTipoMaterial.SelectedValue = materialSelecionado.Tipo_Material_Id;
             txtQtde.Value = materialSelecionado.Quantidade;
             txtAcresc.Value = 0;
         }
+
     }
 }

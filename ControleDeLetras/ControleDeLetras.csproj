@@ -182,6 +182,14 @@
   <ItemGroup>
     <Compile Include="Entidade\Material.cs" />
     <Compile Include="Entidade\Palavra.cs" />
+    <Compile Include="Entidade\Tipo_Material.cs" />
+    <Compile Include="Forms\FrmTipo_Material.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmTipo_Material.Designer.cs">
+      <DependentUpon>FrmTipo_Material.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositorio\Tipo_MaterialRepositorio.cs" />
     <Compile Include="Util\Util.cs" />
     <Compile Include="Forms\FrmMain.cs">
       <SubType>Form</SubType>
@@ -189,17 +197,17 @@
     <Compile Include="Forms\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmMateriais.cs">
+    <Compile Include="Forms\FrmMaterial.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmMateriais.Designer.cs">
-      <DependentUpon>FrmMateriais.cs</DependentUpon>
+    <Compile Include="Forms\FrmMaterial.Designer.cs">
+      <DependentUpon>FrmMaterial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmPalavras.cs">
+    <Compile Include="Forms\FrmPalavra.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmPalavras.Designer.cs">
-      <DependentUpon>FrmPalavras.cs</DependentUpon>
+    <Compile Include="Forms\FrmPalavra.Designer.cs">
+      <DependentUpon>FrmPalavra.cs</DependentUpon>
     </Compile>
     <Compile Include="Interface\IRepos.cs" />
     <Compile Include="Program.cs" />
@@ -215,11 +223,14 @@
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmMateriais.resx">
-      <DependentUpon>FrmMateriais.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmMaterial.resx">
+      <DependentUpon>FrmMaterial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmPalavras.resx">
-      <DependentUpon>FrmPalavras.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmPalavra.resx">
+      <DependentUpon>FrmPalavra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmTipo_Material.resx">
+      <DependentUpon>FrmTipo_Material.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

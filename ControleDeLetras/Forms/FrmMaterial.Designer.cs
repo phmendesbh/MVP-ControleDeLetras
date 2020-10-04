@@ -1,6 +1,6 @@
 ﻿namespace ControleDeLetras.Forms
 {
-    partial class FrmMateriais
+    partial class FrmMaterial
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbTipoMaterial = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.txtAcresc = new System.Windows.Forms.NumericUpDown();
             this.txtQtde = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,6 +51,8 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.cmbTipoMaterial);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtAcresc);
             this.panel1.Controls.Add(this.txtQtde);
             this.panel1.Controls.Add(this.label3);
@@ -61,12 +65,29 @@
             this.panel1.Controls.Add(this.btnAdicionar);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(344, 82);
+            this.panel1.Size = new System.Drawing.Size(418, 142);
             this.panel1.TabIndex = 8;
+            // 
+            // cmbTipoMaterial
+            // 
+            this.cmbTipoMaterial.FormattingEnabled = true;
+            this.cmbTipoMaterial.Location = new System.Drawing.Point(212, 23);
+            this.cmbTipoMaterial.Name = "cmbTipoMaterial";
+            this.cmbTipoMaterial.Size = new System.Drawing.Size(196, 21);
+            this.cmbTipoMaterial.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(208, 8);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Tipo Material";
             // 
             // txtAcresc
             // 
-            this.txtAcresc.Location = new System.Drawing.Point(275, 24);
+            this.txtAcresc.Location = new System.Drawing.Point(72, 70);
             this.txtAcresc.Maximum = new decimal(new int[] {
             999,
             0,
@@ -84,7 +105,7 @@
             // 
             // txtQtde
             // 
-            this.txtQtde.Location = new System.Drawing.Point(211, 24);
+            this.txtQtde.Location = new System.Drawing.Point(8, 70);
             this.txtQtde.Maximum = new decimal(new int[] {
             999,
             0,
@@ -97,7 +118,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(259, 28);
+            this.label3.Location = new System.Drawing.Point(56, 74);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(13, 13);
             this.label3.TabIndex = 6;
@@ -106,7 +127,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(213, 8);
+            this.label2.Location = new System.Drawing.Point(10, 54);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 13);
             this.label2.TabIndex = 6;
@@ -123,7 +144,6 @@
             // 
             // txtDescricao
             // 
-            this.txtDescricao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDescricao.Location = new System.Drawing.Point(8, 25);
             this.txtDescricao.MaxLength = 30;
             this.txtDescricao.Name = "txtDescricao";
@@ -132,7 +152,7 @@
             // 
             // btnRemover
             // 
-            this.btnRemover.Location = new System.Drawing.Point(143, 51);
+            this.btnRemover.Location = new System.Drawing.Point(346, 114);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(62, 23);
             this.btnRemover.TabIndex = 6;
@@ -142,7 +162,7 @@
             // 
             // btnAlterar
             // 
-            this.btnAlterar.Location = new System.Drawing.Point(76, 51);
+            this.btnAlterar.Location = new System.Drawing.Point(279, 114);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(62, 23);
             this.btnAlterar.TabIndex = 5;
@@ -153,7 +173,7 @@
             // btnAcresc
             // 
             this.btnAcresc.Enabled = false;
-            this.btnAcresc.Location = new System.Drawing.Point(262, 50);
+            this.btnAcresc.Location = new System.Drawing.Point(121, 70);
             this.btnAcresc.Name = "btnAcresc";
             this.btnAcresc.Size = new System.Drawing.Size(72, 23);
             this.btnAcresc.TabIndex = 3;
@@ -163,7 +183,7 @@
             // 
             // btnAdicionar
             // 
-            this.btnAdicionar.Location = new System.Drawing.Point(8, 51);
+            this.btnAdicionar.Location = new System.Drawing.Point(211, 114);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(62, 23);
             this.btnAdicionar.TabIndex = 4;
@@ -174,22 +194,22 @@
             // dgvMateriais
             // 
             this.dgvMateriais.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMateriais.Location = new System.Drawing.Point(12, 103);
+            this.dgvMateriais.Location = new System.Drawing.Point(12, 160);
             this.dgvMateriais.Name = "dgvMateriais";
             this.dgvMateriais.ReadOnly = true;
-            this.dgvMateriais.Size = new System.Drawing.Size(344, 342);
+            this.dgvMateriais.Size = new System.Drawing.Size(418, 342);
             this.dgvMateriais.TabIndex = 7;
             this.dgvMateriais.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMateriais_CellClick);
             // 
-            // FrmMateriais
+            // FrmMaterial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 450);
+            this.ClientSize = new System.Drawing.Size(443, 514);
             this.Controls.Add(this.dgvMateriais);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "FrmMateriais";
+            this.Name = "FrmMaterial";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Materiais";
             this.Load += new System.EventHandler(this.FrmLetras_Load);
@@ -216,5 +236,7 @@
         private System.Windows.Forms.Button btnAcresc;
         private System.Windows.Forms.NumericUpDown txtAcresc;
         private System.Windows.Forms.NumericUpDown txtQtde;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cmbTipoMaterial;
     }
 }

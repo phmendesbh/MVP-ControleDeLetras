@@ -61,7 +61,7 @@ namespace ControleDeLetras {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CREATE TABLE IF NOT EXISTS material(id INTEGER PRIMARY KEY, descricao VARCHAR(30), quantidade INTEGER).
+        ///   Looks up a localized string similar to CREATE TABLE IF NOT EXISTS material(id INTEGER PRIMARY KEY, descricao VARCHAR(30), tipo_material_id INTEGER, quantidade INTEGER, FOREIGN KEY(tipo_material_id) REFERENCES tipo_material(id)).
         /// </summary>
         internal static string MATERIAL_CREATE_TABLE {
             get {
@@ -79,7 +79,7 @@ namespace ControleDeLetras {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INSERT INTO material(descricao, quantidade) VALUES(@descricao, @quantidade).
+        ///   Looks up a localized string similar to INSERT INTO material(descricao, tipo_material_id, quantidade) VALUES(@descricao, @tipo_material_id, @quantidade).
         /// </summary>
         internal static string MATERIAL_INSERT {
             get {
@@ -88,7 +88,7 @@ namespace ControleDeLetras {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT id, descricao, quantidade FROM material.
+        ///   Looks up a localized string similar to SELECT id, descricao, tipo_material_id, quantidade FROM material.
         /// </summary>
         internal static string MATERIAL_SELECT {
             get {
@@ -97,7 +97,16 @@ namespace ControleDeLetras {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT id, descricao, quantidade FROM material WHERE id = @id.
+        ///   Looks up a localized string similar to SELECT material.id, material.descricao, material.tipo_material_id, tipo_material.descricao, material.quantidade FROM material INNER JOIN tipo_material ON tipo_material.id = material.tipo_material_id.
+        /// </summary>
+        internal static string MATERIAL_SELECT_JOIN_TIPO_MATERIAL {
+            get {
+                return ResourceManager.GetString("MATERIAL_SELECT_JOIN_TIPO_MATERIAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT id, descricao, tipo_material_id, quantidade FROM material WHERE id = @id.
         /// </summary>
         internal static string MATERIAL_SELECT_POR_ID {
             get {
@@ -106,7 +115,7 @@ namespace ControleDeLetras {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to UPDATE material SET descricao = @descricao, quantidade = @quantidade WHERE id = @id.
+        ///   Looks up a localized string similar to UPDATE material SET descricao = @descricao, tipo_material_id = @tipo_material_id, quantidade = @quantidade WHERE id = @id.
         /// </summary>
         internal static string MATERIAL_UPDATE {
             get {
@@ -165,6 +174,60 @@ namespace ControleDeLetras {
         internal static string PALAVRAS_UPDATE {
             get {
                 return ResourceManager.GetString("PALAVRAS_UPDATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CREATE TABLE IF NOT EXISTS tipo_material(id INTEGER PRIMARY KEY, descricao VARCHAR(30)).
+        /// </summary>
+        internal static string TIPO_MATERIAL_CREATE_TABLE {
+            get {
+                return ResourceManager.GetString("TIPO_MATERIAL_CREATE_TABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DELETE FROM tipo_material WHERE id = @id.
+        /// </summary>
+        internal static string TIPO_MATERIAL_DELETE {
+            get {
+                return ResourceManager.GetString("TIPO_MATERIAL_DELETE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO tipo_material(descricao) VALUES(@descricao).
+        /// </summary>
+        internal static string TIPO_MATERIAL_INSERT {
+            get {
+                return ResourceManager.GetString("TIPO_MATERIAL_INSERT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT id, descricao FROM tipo_material.
+        /// </summary>
+        internal static string TIPO_MATERIAL_SELECT {
+            get {
+                return ResourceManager.GetString("TIPO_MATERIAL_SELECT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT id, descricao FROM tipo_material WHERE id = @id.
+        /// </summary>
+        internal static string TIPO_MATERIAL_SELECT_POR_ID {
+            get {
+                return ResourceManager.GetString("TIPO_MATERIAL_SELECT_POR_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UPDATE tipo_material SET descricao = @descricao WHERE id = @id.
+        /// </summary>
+        internal static string TIPO_MATERIAL_UPDATE {
+            get {
+                return ResourceManager.GetString("TIPO_MATERIAL_UPDATE", resourceCulture);
             }
         }
     }
