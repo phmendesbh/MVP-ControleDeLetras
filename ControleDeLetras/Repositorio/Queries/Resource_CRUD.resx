@@ -148,7 +148,7 @@
     <value>SELECT id, descricao, tipo_material_id, cor_id, quantidade FROM material WHERE id = @id</value>
   </data>
   <data name="MATERIAL_UPDATE" xml:space="preserve">
-    <value>UPDATE material SET descricao = @descricao, tipo_material_id = @tipo_material_id, cor_id, quantidade = @quantidade WHERE id = @id</value>
+    <value>UPDATE material SET descricao = @descricao, tipo_material_id = @tipo_material_id, cor_id = @cor_id, quantidade = @quantidade WHERE id = @id</value>
   </data>
   <data name="MATERIAL_UPDATE_QUANTIDADE" xml:space="preserve">
     <value>UPDATE material SET quantidade = quantidade + @quantidade WHERE id = @id</value>

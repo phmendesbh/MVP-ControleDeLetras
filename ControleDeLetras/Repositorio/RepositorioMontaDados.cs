@@ -43,7 +43,7 @@ namespace ControleDeLetras.Repositorio
 
             string letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-            if (MaterialRepositorio.Obter().Count == 0)
+            if (MaterialRepositorio.ObterTodasInformacoes().Count == 0)
             {
 
                 foreach (var letra in letras.ToCharArray())

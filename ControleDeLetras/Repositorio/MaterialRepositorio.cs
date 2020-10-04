@@ -50,7 +50,7 @@ namespace ControleDeLetras.Repositorio
             }
         }
 
-        public List<Material> Obter()
+        public List<Material> ObterTodasInformacoes()
         {
             var letras = new List<Material>();
 
@@ -71,10 +71,10 @@ namespace ControleDeLetras.Repositorio
                             Descricao = reader.GetString(1),
                             Tipo_Material_Id = reader.GetInt32(2),
                             Tipo_Material_Descricao = reader.GetString(3),
-                            Quantidade = reader.GetInt32(4),
-                            Cor_Id = reader.GetInt32(5),
-                            Cor_Descricao = reader.GetString(6),
-                            Cor_ValorARGB = reader.GetInt32(7)
+                            Cor_Id = reader.GetInt32(4),
+                            Cor_Descricao = reader.GetString(5),
+                            Cor_ValorARGB = reader.GetInt32(6),
+                            Quantidade = reader.GetInt32(7)
                         });
                     }
                 }
@@ -111,7 +111,7 @@ namespace ControleDeLetras.Repositorio
 
         internal void AtualizaEstoqueLetras(Palavra palavra)
         {
-            var letras = Obter();
+            var letras = ObterTodasInformacoes();
             var qtdeLetras = utils.CalculaQtdeLetras(new List<string>() { palavra.Descricao });
 
             foreach (KeyValuePair<string, int> qtdeLetra in qtdeLetras)
@@ -182,6 +182,7 @@ namespace ControleDeLetras.Repositorio
                     updateCmd.Parameters.AddWithValue("@id", letra.Id);
                     updateCmd.Parameters.AddWithValue("@descricao", letra.Descricao);
                     updateCmd.Parameters.AddWithValue("@tipo_material_id", letra.Tipo_Material_Id);
+                    updateCmd.Parameters.AddWithValue("@cor_id", letra.Cor_Id);
                     updateCmd.Parameters.AddWithValue("@quantidade", letra.Quantidade);
                     updateCmd.CommandText = Resource_CRUD.MATERIAL_UPDATE;
                     updateCmd.ExecuteNonQuery();

@@ -8,10 +8,10 @@ namespace ControleDeLetras.Repositorio.Queries
 															material.descricao, 
 															material.tipo_material_id, 
 															tipo_material.descricao, 
-															material.quantidade, 
 															material.cor_id, 
 															cor.descricao, 
-															cor.valorARGB
+															cor.valorARGB,
+															material.quantidade
 													FROM material
 													INNER JOIN tipo_material ON tipo_material.id = material.tipo_material_id
 													INNER JOIN cor ON cor.id = material.cor_id";

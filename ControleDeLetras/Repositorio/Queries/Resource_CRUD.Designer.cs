@@ -151,7 +151,7 @@ namespace ControleDeLetras.Repositorio.Queries {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to UPDATE material SET descricao = @descricao, tipo_material_id = @tipo_material_id, cor_id, quantidade = @quantidade WHERE id = @id.
+        ///   Looks up a localized string similar to UPDATE material SET descricao = @descricao, tipo_material_id = @tipo_material_id, cor_id = @cor_id, quantidade = @quantidade WHERE id = @id.
         /// </summary>
         internal static string MATERIAL_UPDATE {
             get {
