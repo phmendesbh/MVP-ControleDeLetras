@@ -6,9 +6,9 @@ using System.Collections.Generic;
 
 namespace ControleDeLetras.Repositorio
 {
-    class Tipo_MaterialRepositorio : RepositorioBase, IRepos
+    class CorRepositorio : RepositorioBase, IRepos
     {
-        public Tipo_MaterialRepositorio()
+        public CorRepositorio()
         {
             VerificaBanco();
         }
@@ -20,64 +20,37 @@ namespace ControleDeLetras.Repositorio
                 connection.Open();
 
                 var tableCmd = connection.CreateCommand();
-                tableCmd.CommandText = Resource_CRUD.TIPO_MATERIAL_CREATE_TABLE;
+                tableCmd.CommandText = Resource_CRUD.COR_CREATE_TABLE;
                 tableCmd.ExecuteNonQuery();
             }
         }
 
-        public List<Tipo_Material> Obter()
+        public List<Cor> Obter()
         {
-            var tipo_Materiais = new List<Tipo_Material>();
+            var cores = new List<Cor>();
 
             using (var connection = new SqliteConnection(CriaConexao().ConnectionString))
             {
                 connection.Open();
 
                 var selectCmd = connection.CreateCommand();
-                selectCmd.CommandText = Resource_CRUD.TIPO_MATERIAL_SELECT;
+                selectCmd.CommandText = Resource_CRUD.COR_SELECT;
 
                 using (var reader = selectCmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        tipo_Materiais.Add(new Tipo_Material()
+                        cores.Add(new Cor()
                         {
                             Id = reader.GetInt32(0),
                             Descricao = reader.GetString(1),
+                            ValorARBG = reader.GetInt32(2)
                         });
                     }
                 }
             }
 
-            return tipo_Materiais;
-        }
-
-        public List<Tipo_Material> ObterPorId(int id)
-        {
-            var tipo_Materiais = new List<Tipo_Material>();
-
-            using (var connection = new SqliteConnection(CriaConexao().ConnectionString))
-            {
-                connection.Open();
-
-                var selectCmd = connection.CreateCommand();
-                selectCmd.CommandText = Resource_CRUD.TIPO_MATERIAL_SELECT_POR_ID;
-                selectCmd.Parameters.Add(new SqliteParameter("@id", id));
-
-                using (var reader = selectCmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        tipo_Materiais.Add(new Tipo_Material()
-                        {
-                            Id = reader.GetInt32(0),
-                            Descricao = reader.GetString(1),
-                        });
-                    }
-                }
-            }
-
-            return tipo_Materiais;
+            return cores;
         }
 
         public void Remover(int id)
@@ -90,7 +63,7 @@ namespace ControleDeLetras.Repositorio
                 {
                     var deleteCmd = connection.CreateCommand();
                     deleteCmd.Parameters.AddWithValue("@id", id);
-                    deleteCmd.CommandText = Resource_CRUD.TIPO_MATERIAL_DELETE;
+                    deleteCmd.CommandText = Resource_CRUD.COR_DELETE;
                     deleteCmd.ExecuteNonQuery();
 
                     transaction.Commit();
@@ -98,7 +71,7 @@ namespace ControleDeLetras.Repositorio
             }
         }
 
-        public void Inserir(Tipo_Material tipo_Material)
+        public void Inserir(Cor cor)
         {
             using (var connection = new SqliteConnection(CriaConexao().ConnectionString))
             {
@@ -107,8 +80,9 @@ namespace ControleDeLetras.Repositorio
                 using (var transaction = connection.BeginTransaction())
                 {
                     var insertCmd = connection.CreateCommand();
-                    insertCmd.Parameters.Add(new SqliteParameter("@descricao", tipo_Material.Descricao));
-                    insertCmd.CommandText = Resource_CRUD.TIPO_MATERIAL_INSERT;
+                    insertCmd.Parameters.Add(new SqliteParameter("@descricao", cor.Descricao));
+                    insertCmd.Parameters.Add(new SqliteParameter("@valorARGB", cor.ValorARBG));
+                    insertCmd.CommandText = Resource_CRUD.COR_INSERT;
                     insertCmd.ExecuteNonQuery();
 
                     transaction.Commit();
@@ -116,7 +90,7 @@ namespace ControleDeLetras.Repositorio
             }
         }
 
-        internal void Alterar(Tipo_Material tipo_Material)
+        internal void Alterar(Cor cor)
         {
             using (var connection = new SqliteConnection(CriaConexao().ConnectionString))
             {
@@ -125,9 +99,10 @@ namespace ControleDeLetras.Repositorio
                 using (var transaction = connection.BeginTransaction())
                 {
                     var updateCmd = connection.CreateCommand();
-                    updateCmd.Parameters.AddWithValue("@id", tipo_Material.Id);
-                    updateCmd.Parameters.AddWithValue("@descricao", tipo_Material.Descricao);
-                    updateCmd.CommandText = Resource_CRUD.TIPO_MATERIAL_UPDATE;
+                    updateCmd.Parameters.AddWithValue("@id", cor.Id);
+                    updateCmd.Parameters.AddWithValue("@descricao", cor.Descricao);
+                    updateCmd.Parameters.AddWithValue("@valorARGB", cor.ValorARBG);
+                    updateCmd.CommandText = Resource_CRUD.COR_UPDATE;
                     updateCmd.ExecuteNonQuery();
 
                     transaction.Commit();

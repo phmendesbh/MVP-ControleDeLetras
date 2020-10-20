@@ -19,7 +19,6 @@ namespace ControleDeLetras
         public FrmPalavras()
         {
             InitializeComponent();
-            PalavraRepositorio.VerificaBanco();
         }
 
         private void FrmPalavras_Load(object sender, EventArgs e)
@@ -64,9 +63,14 @@ namespace ControleDeLetras
 
             if (retorno == DialogResult.Yes)
             {
-                PalavraRepositorio.Inserir(palavra);
-                MaterialRepositorio.AtualizaEstoqueLetras(new Palavra(null, palavra));
-                AtualizaTela();
+                if (MaterialRepositorio.AtualizaEstoqueLetras(new Palavra(null, palavra)))
+                {
+                    PalavraRepositorio.Inserir(palavra);
+                    AtualizaTela();
+                } else
+                {
+                    MessageBox.Show($"Não há materiais suficiente para a palavra '{palavra}'. Inclusão não realizada.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
         }
 

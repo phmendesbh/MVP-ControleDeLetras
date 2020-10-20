@@ -8,6 +8,10 @@ namespace ControleDeLetras.Forms
         public FrmMain()
         {
             InitializeComponent();
+
+#if DEBUG
+            Repositorio.RepositorioMontaDados montaDados = new Repositorio.RepositorioMontaDados();
+#endif
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -43,6 +47,15 @@ namespace ControleDeLetras.Forms
             FrmTipo_Material frmTipo_Material = new FrmTipo_Material();
             frmTipo_Material.MdiParent = this;
             frmTipo_Material.Show();
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            FechaFormAberto();
+
+            FrmCor frmCor = new FrmCor();
+            frmCor.MdiParent = this;
+            frmCor.Show();
         }
     }
 }
