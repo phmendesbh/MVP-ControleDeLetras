@@ -127,7 +127,7 @@
     <value>INSERT INTO cor(descricao, valorARGB) VALUES(@descricao, @valorARGB)</value>
   </data>
   <data name="COR_SELECT" xml:space="preserve">
-    <value>SELECT id, descricao, valorARGB FROM cor</value>
+    <value>SELECT id, descricao, valorARGB FROM cor ORDER BY descricao</value>
   </data>
   <data name="COR_UPDATE" xml:space="preserve">
     <value>UPDATE cor SET descricao = @descricao, valorARGB = @valorARGB WHERE id = @id</value>

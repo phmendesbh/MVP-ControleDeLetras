@@ -88,7 +88,7 @@ namespace ControleDeLetras.Repositorio.Queries {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT id, descricao, valorARGB FROM cor.
+        ///   Looks up a localized string similar to SELECT id, descricao, valorARGB FROM cor ORDER BY descricao.
         /// </summary>
         internal static string COR_SELECT {
             get {
