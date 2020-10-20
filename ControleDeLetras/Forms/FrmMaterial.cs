@@ -3,7 +3,6 @@ using ControleDeLetras.Repositorio;
 using ControleDeLetras.Util;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -13,9 +12,11 @@ namespace ControleDeLetras.Forms
     public partial class FrmMaterial : Form
     {
         readonly MaterialRepositorio letraRepositorio = new MaterialRepositorio();
+        readonly CorRepositorio corRepositorio = new CorRepositorio();
         readonly Tipo_MaterialRepositorio tipo_MaterialRepositorio = new Tipo_MaterialRepositorio();
 
         private Material materialSelecionado = new Material();
+        private List<Cor> cores;
         private Enumeradores.Acao Acao = Enumeradores.Acao.Default;
 
         public FrmMaterial()
@@ -82,13 +83,13 @@ namespace ControleDeLetras.Forms
         {
             LimpaCampos();
 
-            if (cmbTipoMaterial.Items.Count == 0) PreencheCombo();
-
             dgvMateriais.DataSource = letraRepositorio.ObterTodasInformacoes();
             dgvMateriais.Columns["Id"].Visible = false;
             dgvMateriais.Columns["Tipo_Material_Id"].Visible = false;
             dgvMateriais.Columns["Cor_Id"].Visible = false;
             dgvMateriais.Columns["Cor_ValorARGB"].Visible = false;
+
+            PreencheCombo();
 
             AtivarBotoes(Acao);
         }
@@ -99,16 +100,25 @@ namespace ControleDeLetras.Forms
             txtQtde.Value = 0;
             txtAcresc.Value = 0;
             btnAcresc.Enabled = false;
-            cmbTipoMaterial.SelectedIndex = -1;
             pnlCor.BackColor = Color.Empty;
-            lblCor.Text = string.Empty;
         }
 
         private void PreencheCombo()
         {
-            cmbTipoMaterial.DataSource = tipo_MaterialRepositorio.Obter();
-            cmbTipoMaterial.ValueMember = "Id";
-            cmbTipoMaterial.DisplayMember = "Descricao";
+            if (cmbTipoMaterial.Items.Count == 0)
+            {
+                cmbTipoMaterial.DataSource = tipo_MaterialRepositorio.Obter();
+                cmbTipoMaterial.ValueMember = "Id";
+                cmbTipoMaterial.DisplayMember = "Descricao";
+            }
+
+            if (cmbCores.Items.Count == 0)
+            {
+                cores = corRepositorio.Obter();
+                cmbCores.DataSource = cores;
+                cmbCores.ValueMember = "Id";
+                cmbCores.DisplayMember = "Descricao";
+            }
         }
 
         private void dgvMateriais_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -123,14 +133,15 @@ namespace ControleDeLetras.Forms
             materialSelecionado.Tipo_Material_Id = (int)dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells["Tipo_Material_Id"].Value;
             materialSelecionado.Tipo_Material_Descricao = dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells["Tipo_Material_Descricao"].Value.ToString();
             materialSelecionado.Cor_Id = (int)dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells["Cor_Id"].Value;
+            materialSelecionado.Cor_ValorARGB = (int)dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells["Cor_ValorARGB"].Value;
             materialSelecionado.Quantidade = (int)dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells["Quantidade"].Value;
 
             txtDescricao.Text = materialSelecionado.Descricao;
             cmbTipoMaterial.SelectedValue = materialSelecionado.Tipo_Material_Id;
             txtQtde.Value = materialSelecionado.Quantidade;
             txtAcresc.Value = 0;
-            pnlCor.BackColor = Color.FromArgb((int)dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells["Cor_ValorARGB"].Value);
-            lblCor.Text = dgvMateriais.Rows[dgvMateriais.CurrentCell.RowIndex].Cells["Cor_Descricao"].Value.ToString();
+            pnlCor.BackColor = Color.FromArgb(materialSelecionado.Cor_ValorARGB);
+            cmbCores.SelectedValue = materialSelecionado.Cor_Id;
         }
 
         private void AcaoBotoes(Enumeradores.Acao acao)
@@ -196,6 +207,7 @@ namespace ControleDeLetras.Forms
             btnCancelar.Visible = false;
             btnAcresc.Enabled = false;
             txtAcresc.Enabled = false;
+            cmbCores.Enabled = false;
 
             switch (acao)
             {
@@ -203,6 +215,7 @@ namespace ControleDeLetras.Forms
                 case Enumeradores.Acao.Alterar:
                     btnSalvar.Visible = true;
                     btnCancelar.Visible = true;
+                    cmbCores.Enabled = true;
                     break;
                 case Enumeradores.Acao.Salvar:
                 case Enumeradores.Acao.Cancelar:
@@ -212,11 +225,20 @@ namespace ControleDeLetras.Forms
                     btnApagar.Enabled = true;
                     btnSalvar.Visible = false;
                     btnCancelar.Visible = false;
+                    cmbCores.Enabled = false;
                     txtAcresc.Enabled = true;
                     Acao = Enumeradores.Acao.Default;
                     break;
             }
         }
 
+        private void cmbCores_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (cores != null && cmbCores.Items.Count > 0)
+            {
+                var cor = (int)cores.Where(w => w.Id == (int)cmbCores.SelectedValue).Select(s => s.ValorARBG).FirstOrDefault();
+                pnlCor.BackColor = Color.FromArgb(cor);
+            }
+        }
     }
 }

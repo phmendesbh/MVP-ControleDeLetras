@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbCores = new System.Windows.Forms.ComboBox();
             this.pnlBotoes = new System.Windows.Forms.Panel();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnApagar = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
-            this.lblCor = new System.Windows.Forms.Label();
             this.pnlCor = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbTipoMaterial = new System.Windows.Forms.ComboBox();
@@ -58,8 +58,8 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.cmbCores);
             this.panel1.Controls.Add(this.pnlBotoes);
-            this.panel1.Controls.Add(this.lblCor);
             this.panel1.Controls.Add(this.pnlCor);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.cmbTipoMaterial);
@@ -75,6 +75,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(418, 142);
             this.panel1.TabIndex = 8;
+            // 
+            // cmbCores
+            // 
+            this.cmbCores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCores.FormattingEnabled = true;
+            this.cmbCores.Location = new System.Drawing.Point(48, 70);
+            this.cmbCores.Name = "cmbCores";
+            this.cmbCores.Size = new System.Drawing.Size(158, 21);
+            this.cmbCores.TabIndex = 2;
+            this.cmbCores.SelectionChangeCommitted += new System.EventHandler(this.cmbCores_SelectionChangeCommitted);
             // 
             // pnlBotoes
             // 
@@ -93,7 +103,7 @@
             this.btnSalvar.Location = new System.Drawing.Point(284, 2);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(62, 23);
-            this.btnSalvar.TabIndex = 22;
+            this.btnSalvar.TabIndex = 9;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
@@ -103,7 +113,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(352, 2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(62, 23);
-            this.btnCancelar.TabIndex = 21;
+            this.btnCancelar.TabIndex = 10;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -113,7 +123,7 @@
             this.btnApagar.Location = new System.Drawing.Point(139, 2);
             this.btnApagar.Name = "btnApagar";
             this.btnApagar.Size = new System.Drawing.Size(62, 23);
-            this.btnApagar.TabIndex = 20;
+            this.btnApagar.TabIndex = 8;
             this.btnApagar.Text = "Apagar";
             this.btnApagar.UseVisualStyleBackColor = true;
             this.btnApagar.Click += new System.EventHandler(this.btnApagar_Click);
@@ -123,7 +133,7 @@
             this.btnAlterar.Location = new System.Drawing.Point(72, 2);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(62, 23);
-            this.btnAlterar.TabIndex = 19;
+            this.btnAlterar.TabIndex = 7;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
@@ -133,25 +143,17 @@
             this.btnNovo.Location = new System.Drawing.Point(4, 2);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(62, 23);
-            this.btnNovo.TabIndex = 18;
+            this.btnNovo.TabIndex = 6;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
-            // 
-            // lblCor
-            // 
-            this.lblCor.Location = new System.Drawing.Point(75, 70);
-            this.lblCor.Name = "lblCor";
-            this.lblCor.Size = new System.Drawing.Size(131, 21);
-            this.lblCor.TabIndex = 15;
-            this.lblCor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pnlCor
             // 
             this.pnlCor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlCor.Location = new System.Drawing.Point(9, 70);
             this.pnlCor.Name = "pnlCor";
-            this.pnlCor.Size = new System.Drawing.Size(60, 21);
+            this.pnlCor.Size = new System.Drawing.Size(33, 21);
             this.pnlCor.TabIndex = 14;
             this.pnlCor.Tag = "Selecione a cor";
             // 
@@ -170,7 +172,7 @@
             this.cmbTipoMaterial.Location = new System.Drawing.Point(212, 23);
             this.cmbTipoMaterial.Name = "cmbTipoMaterial";
             this.cmbTipoMaterial.Size = new System.Drawing.Size(196, 21);
-            this.cmbTipoMaterial.TabIndex = 10;
+            this.cmbTipoMaterial.TabIndex = 1;
             // 
             // label4
             // 
@@ -196,7 +198,7 @@
             -2147483648});
             this.txtAcresc.Name = "txtAcresc";
             this.txtAcresc.Size = new System.Drawing.Size(43, 20);
-            this.txtAcresc.TabIndex = 7;
+            this.txtAcresc.TabIndex = 4;
             this.txtAcresc.ValueChanged += new System.EventHandler(this.txtAcresc_ValueChanged);
             // 
             // txtQtde
@@ -209,7 +211,7 @@
             0});
             this.txtQtde.Name = "txtQtde";
             this.txtQtde.Size = new System.Drawing.Size(43, 20);
-            this.txtQtde.TabIndex = 7;
+            this.txtQtde.TabIndex = 3;
             // 
             // label3
             // 
@@ -252,7 +254,7 @@
             this.btnAcresc.Location = new System.Drawing.Point(332, 70);
             this.btnAcresc.Name = "btnAcresc";
             this.btnAcresc.Size = new System.Drawing.Size(72, 23);
-            this.btnAcresc.TabIndex = 3;
+            this.btnAcresc.TabIndex = 5;
             this.btnAcresc.Text = "Acrescentar";
             this.btnAcresc.UseVisualStyleBackColor = true;
             this.btnAcresc.Click += new System.EventHandler(this.btnAcresc_Click);
@@ -264,7 +266,7 @@
             this.dgvMateriais.Name = "dgvMateriais";
             this.dgvMateriais.ReadOnly = true;
             this.dgvMateriais.Size = new System.Drawing.Size(418, 342);
-            this.dgvMateriais.TabIndex = 7;
+            this.dgvMateriais.TabIndex = 11;
             this.dgvMateriais.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMateriais_CellClick);
             // 
             // FrmMaterial
@@ -302,7 +304,6 @@
         private System.Windows.Forms.NumericUpDown txtQtde;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbTipoMaterial;
-        private System.Windows.Forms.Label lblCor;
         private System.Windows.Forms.Panel pnlCor;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel pnlBotoes;
@@ -311,5 +312,6 @@
         private System.Windows.Forms.Button btnApagar;
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnNovo;
+        private System.Windows.Forms.ComboBox cmbCores;
     }
 }
