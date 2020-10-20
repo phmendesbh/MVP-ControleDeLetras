@@ -109,10 +109,12 @@ namespace ControleDeLetras.Repositorio
             return material;
         }
 
-        internal void AtualizaEstoqueLetras(Palavra palavra)
+        internal bool AtualizaEstoqueLetras(Palavra palavra)
         {
             var letras = ObterTodasInformacoes();
             var qtdeLetras = utils.CalculaQtdeLetras(new List<string>() { palavra.Descricao });
+
+            if (!ValidaQuantidadeMaterial(letras, qtdeLetras)) return false;
 
             foreach (KeyValuePair<string, int> qtdeLetra in qtdeLetras)
             {
@@ -130,6 +132,19 @@ namespace ControleDeLetras.Repositorio
                     AlterarQuantidade(letra.Id, qtdeLetra.Value);
                 };
             }
+
+            return true;
+        }
+
+        private bool ValidaQuantidadeMaterial(List<Material> materiais, IDictionary<string, int> qtdeMateriais)
+        {
+            foreach (KeyValuePair<string, int> qtdeMaterial in qtdeMateriais)
+            {
+                var material = materiais.Where(w => w.Descricao == qtdeMaterial.Key).FirstOrDefault();
+                if (material.Quantidade + (qtdeMaterial.Value * -1) < 0) return false;
+            }
+
+            return true;
         }
 
         public void Remover(int id)
