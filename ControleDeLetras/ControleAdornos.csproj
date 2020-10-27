@@ -16,8 +16,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5DDBBEF2-E5ED-499C-94ED-35BB081A2832}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ControleDeLetras</RootNamespace>
-    <AssemblyName>ControleDeLetras</AssemblyName>
+    <RootNamespace>ControleAdornos</RootNamespace>
+    <AssemblyName>ControleAdornos</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -207,6 +207,11 @@
     </Compile>
     <Compile Include="Repositorio\CorRepositorio.cs" />
     <Compile Include="Repositorio\Queries\Material_Queries.cs" />
+    <Compile Include="Repositorio\Queries\Resource_CRUD.Designer.cs">
+      <DependentUpon>Resource_CRUD.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Include="Repositorio\RepositorioMontaDados.cs" />
     <Compile Include="Repositorio\Tipo_MaterialRepositorio.cs" />
     <Compile Include="Util\ResourceMensagensPadrao.Designer.cs">
@@ -239,11 +244,6 @@
     <Compile Include="Repositorio\RepositorioBase.cs" />
     <Compile Include="Repositorio\MaterialRepositorio.cs" />
     <Compile Include="Repositorio\PalavraRepositorio.cs" />
-    <Compile Include="Repositorio\Queries\Resource_CRUD.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resource_CRUD.resx</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -267,6 +267,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Repositorio\Queries\Resource_CRUD.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -291,9 +292,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Icones\Cores-Ico.png" />
     <Content Include="Icones\Letras-Ico.png" />
     <Content Include="Icones\Palavras-Ico.png" />
     <Content Include="Icones\Icone.ico" />
+    <Content Include="Icones\Tipo_Materiais-Ico.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

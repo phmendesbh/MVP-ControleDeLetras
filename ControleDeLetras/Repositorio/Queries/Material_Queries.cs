@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace ControleDeLetras.Repositorio.Queries
+namespace ControleAdornos.Repositorio.Queries
 {
     public class Material_Queries
     {

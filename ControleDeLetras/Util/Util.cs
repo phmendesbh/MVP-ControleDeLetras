@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace ControleDeLetras.Util
+namespace ControleAdornos.Util
 {
     public class Enumeradores
     {

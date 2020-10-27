@@ -109,7 +109,7 @@
             this.Controls.Add(this.toolStrip1);
             this.IsMdiContainer = true;
             this.Name = "FrmMain";
-            this.Text = "Adornos Controle";
+            this.Text = "Controle Adornos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ControleDeLetras.Repositorio.Queries {
+namespace ControleAdornos.Repositorio.Queries {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ControleDeLetras.Repositorio.Queries {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ControleDeLetras.Repositorio.Queries.Resource_CRUD", typeof(Resource_CRUD).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ControleAdornos.Repositorio.Queries.Resource_CRUD", typeof(Resource_CRUD).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
