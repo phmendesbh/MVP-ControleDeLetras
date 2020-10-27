@@ -39,6 +39,7 @@
             this.txtPalavra = new System.Windows.Forms.TextBox();
             this.btnRemover = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
+            this.lblTotal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chtLetras)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -86,6 +87,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.lblTotal);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtPalavra);
             this.panel1.Controls.Add(this.btnRemover);
@@ -134,6 +136,15 @@
             this.btnAlterar.UseVisualStyleBackColor = true;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
+            // lblTotal
+            // 
+            this.lblTotal.Location = new System.Drawing.Point(140, 9);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(65, 13);
+            this.lblTotal.TabIndex = 7;
+            this.lblTotal.Text = "Total:";
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // FrmPalavras
             // 
             this.AcceptButton = this.btnAdicionar;
@@ -165,6 +176,7 @@
         private System.Windows.Forms.TextBox txtPalavra;
         private System.Windows.Forms.Button btnRemover;
         private System.Windows.Forms.Button btnAlterar;
+        private System.Windows.Forms.Label lblTotal;
     }
 }
 

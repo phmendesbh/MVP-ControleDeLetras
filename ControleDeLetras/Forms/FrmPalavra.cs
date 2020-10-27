@@ -37,6 +37,7 @@ namespace ControleDeLetras
             MontaGrafico(lista);
 
             txtPalavra.Text = "";
+            lblTotal.Text = $"Total: {lstPalavras.Count()}";
         }
 
         private void MontaGrafico(List<string> palavras)
