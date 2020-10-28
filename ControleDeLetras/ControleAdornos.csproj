@@ -17,7 +17,7 @@
     <ProjectGuid>{5DDBBEF2-E5ED-499C-94ED-35BB081A2832}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>ControleAdornos</RootNamespace>
-    <AssemblyName>ControleAdornos</AssemblyName>
+    <AssemblyName>Controle Adornos</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -226,8 +226,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Tipo_Material_Queries.resx</DependentUpon>
     </Compile>
-    <Compile Include="Repositorio\RepositorioMontaDados.cs"/>
-    <Compile Include="Repositorio\Tipo_MaterialRepositorio.cs"/>
+    <Compile Include="Repositorio\RepositorioMontaDados.cs" />
+    <Compile Include="Repositorio\Tipo_MaterialRepositorio.cs" />
     <Compile Include="Util\ResourceMensagensPadrao.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
