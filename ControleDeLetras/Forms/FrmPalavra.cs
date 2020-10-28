@@ -1,6 +1,6 @@
 ﻿using ControleDeLetras.Entidade;
 using ControleDeLetras.Repositorio;
-using ControleDeLetras.Util;
+using ControleAdornos.Util;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -37,6 +37,7 @@ namespace ControleDeLetras
             MontaGrafico(lista);
 
             txtPalavra.Text = "";
+            lblTotal.Text = $"Total: {lstPalavras.Count()}";
         }
 
         private void MontaGrafico(List<string> palavras)

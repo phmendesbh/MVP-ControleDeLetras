@@ -1,7 +1,7 @@
 ﻿using ControleDeLetras.Entidade;
 using ControleDeLetras.Interface;
-using ControleDeLetras.Repositorio.Queries;
-using ControleDeLetras.Util;
+using ControleAdornos.Repositorio.Queries;
+using ControleAdornos.Util;
 using Microsoft.Data.Sqlite;
 using System.Collections.Generic;
 using System.Data;

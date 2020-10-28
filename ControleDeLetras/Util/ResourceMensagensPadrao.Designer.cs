@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ControleDeLetras.Util {
+namespace ControleAdornos.Util {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ControleDeLetras.Util {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ControleDeLetras.Util.ResourceMensagensPadrao", typeof(ResourceMensagensPadrao).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ControleAdornos.Util.ResourceMensagensPadrao", typeof(ResourceMensagensPadrao).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
