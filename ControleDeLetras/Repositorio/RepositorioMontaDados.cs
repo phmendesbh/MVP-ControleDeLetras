@@ -52,6 +52,7 @@ namespace ControleDeLetras.Repositorio
                     {
                         Descricao = letra.ToString(),
                         Tipo_Material_Id = 1,
+                        Cor_Id = 1,
                         Quantidade = 0
                     });
                 }

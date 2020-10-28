@@ -206,14 +206,28 @@
       <DependentUpon>FrmCor.cs</DependentUpon>
     </Compile>
     <Compile Include="Repositorio\CorRepositorio.cs" />
-    <Compile Include="Repositorio\Queries\Material_Queries.cs" />
-    <Compile Include="Repositorio\Queries\Resource_CRUD.Designer.cs">
-      <DependentUpon>Resource_CRUD.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
+    <Compile Include="Repositorio\Queries\Cor_Queries.Designer.cs">
       <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cor_Queries.resx</DependentUpon>
     </Compile>
-    <Compile Include="Repositorio\RepositorioMontaDados.cs" />
-    <Compile Include="Repositorio\Tipo_MaterialRepositorio.cs" />
+    <Compile Include="Repositorio\Queries\Material_Queries.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Material_Queries.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Repositorio\Queries\Palavra_Queries.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Palavra_Queries.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Repositorio\Queries\Tipo_Material_Queries.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Tipo_Material_Queries.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Repositorio\RepositorioMontaDados.cs"/>
+    <Compile Include="Repositorio\Tipo_MaterialRepositorio.cs"/>
     <Compile Include="Util\ResourceMensagensPadrao.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -269,9 +283,21 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Repositorio\Queries\Resource_CRUD.resx">
+    <EmbeddedResource Include="Repositorio\Queries\Cor_Queries.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource_CRUD.Designer.cs</LastGenOutput>
+      <LastGenOutput>Cor_Queries.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Repositorio\Queries\Material_Queries.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Material_Queries.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Repositorio\Queries\Palavra_Queries.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Palavra_Queries.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Repositorio\Queries\Tipo_Material_Queries.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Tipo_Material_Queries.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Util\ResourceMensagensPadrao.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -297,6 +323,29 @@
     <Content Include="Icones\Palavras-Ico.png" />
     <Content Include="Icones\Icone.ico" />
     <Content Include="Icones\Tipo_Materiais-Ico.png" />
+    <Content Include="Repositorio\Queries\Cor\AlterarCor.sql" />
+    <Content Include="Repositorio\Queries\Cor\ApagarCor.sql" />
+    <Content Include="Repositorio\Queries\Cor\CriarTabelaCor.sql" />
+    <Content Include="Repositorio\Queries\Cor\InserirCor.sql" />
+    <Content Include="Repositorio\Queries\Cor\ObterCores.sql" />
+    <Content Include="Repositorio\Queries\Material\AlterarMaterial.sql" />
+    <Content Include="Repositorio\Queries\Material\AlterarQuantidadeMaterial.sql" />
+    <Content Include="Repositorio\Queries\Material\ApagarMaterial.sql" />
+    <Content Include="Repositorio\Queries\Material\CriarTabelaMaterial.sql" />
+    <Content Include="Repositorio\Queries\Material\InserirMaterial.sql" />
+    <Content Include="Repositorio\Queries\Material\ObterMateriais.sql" />
+    <Content Include="Repositorio\Queries\Material\ObterMaterialPorId.sql" />
+    <Content Include="Repositorio\Queries\Palavra\AlterarPalavra.sql" />
+    <Content Include="Repositorio\Queries\Palavra\ApagarPalavra.sql" />
+    <Content Include="Repositorio\Queries\Palavra\CriarTabelaPalavra.sql" />
+    <Content Include="Repositorio\Queries\Palavra\InserirPalavra.sql" />
+    <Content Include="Repositorio\Queries\Palavra\ObterPalavras.sql" />
+    <Content Include="Repositorio\Queries\TipoMaterial\AlterarTipo_Material.sql" />
+    <Content Include="Repositorio\Queries\TipoMaterial\ApagarTipo_Material.sql" />
+    <Content Include="Repositorio\Queries\TipoMaterial\CriarTabelaTipo_Material.sql" />
+    <Content Include="Repositorio\Queries\TipoMaterial\InserirTipo_Material.sql" />
+    <Content Include="Repositorio\Queries\TipoMaterial\ObterTipo_Materiais.sql" />
+    <Content Include="Repositorio\Queries\TipoMaterial\ObterTipo_MaterialPorId.sql" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

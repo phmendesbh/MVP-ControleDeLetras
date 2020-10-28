@@ -1,0 +1,2 @@
+﻿CREATE TABLE IF NOT EXISTS palavra
+(id INTEGER PRIMARY KEY, descricao VARCHAR(15))

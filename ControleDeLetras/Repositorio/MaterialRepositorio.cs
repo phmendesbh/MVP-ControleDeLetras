@@ -26,7 +26,7 @@ namespace ControleDeLetras.Repositorio
                 connection.Open();
 
                 var tableCmd = connection.CreateCommand();
-                tableCmd.CommandText = Resource_CRUD.MATERIAL_CREATE_TABLE;
+                tableCmd.CommandText = Material_Queries.CriarTabelaMaterial;
                 tableCmd.ExecuteNonQuery();
             }
         }
@@ -42,7 +42,7 @@ namespace ControleDeLetras.Repositorio
                     var updateCmd = connection.CreateCommand();
                     updateCmd.Parameters.AddWithValue("@id", idSelecionado);
                     updateCmd.Parameters.AddWithValue("@quantidade", value);
-                    updateCmd.CommandText = Resource_CRUD.MATERIAL_UPDATE_QUANTIDADE;
+                    updateCmd.CommandText = Material_Queries.AlterarQuantidadeMaterial;
                     updateCmd.ExecuteNonQuery();
 
                     transaction.Commit();
@@ -59,7 +59,7 @@ namespace ControleDeLetras.Repositorio
                 connection.Open();
 
                 var selectCmd = connection.CreateCommand();
-                selectCmd.CommandText = Queries.SELECT_JOIN_TIPO_MATERIAL;
+                selectCmd.CommandText = Material_Queries.ObterMateriais;
 
                 using (var reader = selectCmd.ExecuteReader())
                 {
@@ -92,7 +92,7 @@ namespace ControleDeLetras.Repositorio
                 connection.Open();
 
                 var selectCmd = connection.CreateCommand();
-                selectCmd.CommandText = Resource_CRUD.MATERIAL_SELECT_POR_ID;
+                selectCmd.CommandText = Material_Queries.ObterMaterialPorId;
                 selectCmd.Parameters.Add(new SqliteParameter("@id", id));
 
                 using (var reader = selectCmd.ExecuteReader())
@@ -157,7 +157,7 @@ namespace ControleDeLetras.Repositorio
                 {
                     var deleteCmd = connection.CreateCommand();
                     deleteCmd.Parameters.AddWithValue("@id", id);
-                    deleteCmd.CommandText = Resource_CRUD.MATERIAL_DELETE;
+                    deleteCmd.CommandText = Material_Queries.ApagarMaterial;
                     deleteCmd.ExecuteNonQuery();
 
                     transaction.Commit();
@@ -176,8 +176,9 @@ namespace ControleDeLetras.Repositorio
                     var insertCmd = connection.CreateCommand();
                     insertCmd.Parameters.Add(new SqliteParameter("@descricao", letra.Descricao));
                     insertCmd.Parameters.Add(new SqliteParameter("@tipo_material_id", letra.Tipo_Material_Id));
+                    insertCmd.Parameters.Add(new SqliteParameter("@cor_id", letra.Cor_Id));
                     insertCmd.Parameters.Add(new SqliteParameter("@quantidade", letra.Quantidade));
-                    insertCmd.CommandText = Resource_CRUD.MATERIAL_INSERT;
+                    insertCmd.CommandText = Material_Queries.InserirMaterial;
                     insertCmd.ExecuteNonQuery();
 
                     transaction.Commit();
@@ -199,7 +200,7 @@ namespace ControleDeLetras.Repositorio
                     updateCmd.Parameters.AddWithValue("@tipo_material_id", letra.Tipo_Material_Id);
                     updateCmd.Parameters.AddWithValue("@cor_id", letra.Cor_Id);
                     updateCmd.Parameters.AddWithValue("@quantidade", letra.Quantidade);
-                    updateCmd.CommandText = Resource_CRUD.MATERIAL_UPDATE;
+                    updateCmd.CommandText = Material_Queries.AlterarMaterial;
                     updateCmd.ExecuteNonQuery();
 
                     transaction.Commit();

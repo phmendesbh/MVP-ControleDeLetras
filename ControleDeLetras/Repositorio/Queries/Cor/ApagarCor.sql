@@ -1,0 +1,1 @@
+﻿DELETE FROM cor WHERE id = @id

@@ -1,0 +1,3 @@
+﻿CREATE TABLE IF NOT EXISTS tipo_material
+(id INTEGER PRIMARY KEY, 
+descricao VARCHAR(30))

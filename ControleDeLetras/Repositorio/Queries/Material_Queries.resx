@@ -117,73 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="COR_CREATE_TABLE" xml:space="preserve">
-    <value>CREATE TABLE IF NOT EXISTS cor(id INTEGER PRIMARY KEY, descricao VARCHAR(30), valorARGB INTEGER)</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="AlterarMaterial" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>material\alterarmaterial.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="COR_DELETE" xml:space="preserve">
-    <value>DELETE FROM cor WHERE id = @id</value>
+  <data name="AlterarQuantidadeMaterial" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>material\alterarquantidadematerial.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="COR_INSERT" xml:space="preserve">
-    <value>INSERT INTO cor(descricao, valorARGB) VALUES(@descricao, @valorARGB)</value>
+  <data name="ApagarMaterial" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>material\apagarmaterial.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="COR_SELECT" xml:space="preserve">
-    <value>SELECT id, descricao, valorARGB FROM cor ORDER BY descricao</value>
+  <data name="CriarTabelaMaterial" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>material\criartabelamaterial.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="COR_UPDATE" xml:space="preserve">
-    <value>UPDATE cor SET descricao = @descricao, valorARGB = @valorARGB WHERE id = @id</value>
+  <data name="InserirMaterial" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>material\inserirmaterial.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="MATERIAL_CREATE_TABLE" xml:space="preserve">
-    <value>CREATE TABLE IF NOT EXISTS material(id INTEGER PRIMARY KEY, descricao VARCHAR(30), tipo_material_id INTEGER, cor_id INTEGER, quantidade INTEGER, FOREIGN KEY(tipo_material_id) REFERENCES tipo_material(id), FOREIGN KEY(cor_id) REFERENCES cor(id))</value>
+  <data name="ObterMateriais" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>material\obtermateriais.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="MATERIAL_DELETE" xml:space="preserve">
-    <value>DELETE FROM material WHERE id = @id</value>
-  </data>
-  <data name="MATERIAL_INSERT" xml:space="preserve">
-    <value>INSERT INTO material(descricao, tipo_material_id, quantidade) VALUES(@descricao, @tipo_material_id, @quantidade)</value>
-  </data>
-  <data name="MATERIAL_SELECT" xml:space="preserve">
-    <value>SELECT id, descricao, tipo_material_id, cor_id, quantidade FROM material</value>
-  </data>
-  <data name="MATERIAL_SELECT_POR_ID" xml:space="preserve">
-    <value>SELECT id, descricao, tipo_material_id, cor_id, quantidade FROM material WHERE id = @id</value>
-  </data>
-  <data name="MATERIAL_UPDATE" xml:space="preserve">
-    <value>UPDATE material SET descricao = @descricao, tipo_material_id = @tipo_material_id, cor_id = @cor_id, quantidade = @quantidade WHERE id = @id</value>
-  </data>
-  <data name="MATERIAL_UPDATE_QUANTIDADE" xml:space="preserve">
-    <value>UPDATE material SET quantidade = quantidade + @quantidade WHERE id = @id</value>
-  </data>
-  <data name="PALAVRA_CREATE_TABLE" xml:space="preserve">
-    <value>CREATE TABLE IF NOT EXISTS palavra(id INTEGER PRIMARY KEY, descricao VARCHAR(15))</value>
-  </data>
-  <data name="PALAVRA_DELETE" xml:space="preserve">
-    <value>DELETE FROM palavra WHERE id = @id</value>
-  </data>
-  <data name="PALAVRA_INSERT" xml:space="preserve">
-    <value>INSERT INTO palavra (descricao) VALUES(@descricao)</value>
-  </data>
-  <data name="PALAVRA_SELECT" xml:space="preserve">
-    <value>SELECT id, descricao FROM palavra</value>
-  </data>
-  <data name="PALAVRA_UPDATE" xml:space="preserve">
-    <value>UPDATE palavra SET descricao = @descricao WHERE id = @id</value>
-  </data>
-  <data name="TIPO_MATERIAL_CREATE_TABLE" xml:space="preserve">
-    <value>CREATE TABLE IF NOT EXISTS tipo_material(id INTEGER PRIMARY KEY, descricao VARCHAR(30))</value>
-  </data>
-  <data name="TIPO_MATERIAL_DELETE" xml:space="preserve">
-    <value>DELETE FROM tipo_material WHERE id = @id</value>
-  </data>
-  <data name="TIPO_MATERIAL_INSERT" xml:space="preserve">
-    <value>INSERT INTO tipo_material(descricao) VALUES(@descricao)</value>
-  </data>
-  <data name="TIPO_MATERIAL_SELECT" xml:space="preserve">
-    <value>SELECT id, descricao FROM tipo_material</value>
-  </data>
-  <data name="TIPO_MATERIAL_SELECT_POR_ID" xml:space="preserve">
-    <value>SELECT id, descricao FROM tipo_material WHERE id = @id</value>
-  </data>
-  <data name="TIPO_MATERIAL_UPDATE" xml:space="preserve">
-    <value>UPDATE tipo_material SET descricao = @descricao WHERE id = @id</value>
+  <data name="ObterMaterialPorId" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>material\obtermaterialporid.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

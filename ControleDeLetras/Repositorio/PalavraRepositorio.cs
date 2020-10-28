@@ -20,7 +20,7 @@ namespace ControleDeLetras.Repositorio
                 connection.Open();
 
                 var tableCmd = connection.CreateCommand();
-                tableCmd.CommandText = Resource_CRUD.PALAVRA_CREATE_TABLE;
+                tableCmd.CommandText = Palavra_Queries.CriarTabelaPalavra;
                 tableCmd.ExecuteNonQuery();
             }
         }
@@ -34,7 +34,7 @@ namespace ControleDeLetras.Repositorio
                 connection.Open();
 
                 var selectCmd = connection.CreateCommand();
-                selectCmd.CommandText = Resource_CRUD.PALAVRA_SELECT;
+                selectCmd.CommandText = Palavra_Queries.ObterPalavras;
 
                 using (var reader = selectCmd.ExecuteReader())
                 {
@@ -58,7 +58,7 @@ namespace ControleDeLetras.Repositorio
                 {
                     var deleteCmd = connection.CreateCommand();
                     deleteCmd.Parameters.AddWithValue("@id", palavra.Id);
-                    deleteCmd.CommandText = Resource_CRUD.PALAVRA_DELETE;
+                    deleteCmd.CommandText = Palavra_Queries.ApagarPalavra;
                     deleteCmd.ExecuteNonQuery();
 
                     transaction.Commit();
@@ -76,7 +76,7 @@ namespace ControleDeLetras.Repositorio
                 {
                     var insertCmd = connection.CreateCommand();
                     insertCmd.Parameters.Add(new SqliteParameter("@descricao", palavra));
-                    insertCmd.CommandText = Resource_CRUD.PALAVRA_INSERT;
+                    insertCmd.CommandText = Palavra_Queries.InserirPalavra;
                     insertCmd.ExecuteNonQuery();
 
                     transaction.Commit();
@@ -95,7 +95,7 @@ namespace ControleDeLetras.Repositorio
                     var updateCmd = connection.CreateCommand();
                     updateCmd.Parameters.AddWithValue("@id", palavra.Id);
                     updateCmd.Parameters.AddWithValue("@descricao", palavra.Descricao);
-                    updateCmd.CommandText = Resource_CRUD.PALAVRA_UPDATE;
+                    updateCmd.CommandText = Palavra_Queries.AlterarPalavra;
                     updateCmd.ExecuteNonQuery();
 
                     transaction.Commit();

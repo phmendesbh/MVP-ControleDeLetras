@@ -20,7 +20,7 @@ namespace ControleDeLetras.Repositorio
                 connection.Open();
 
                 var tableCmd = connection.CreateCommand();
-                tableCmd.CommandText = Resource_CRUD.COR_CREATE_TABLE;
+                tableCmd.CommandText = Cor_Queries.CriarTabelaCor;
                 tableCmd.ExecuteNonQuery();
             }
         }
@@ -34,7 +34,7 @@ namespace ControleDeLetras.Repositorio
                 connection.Open();
 
                 var selectCmd = connection.CreateCommand();
-                selectCmd.CommandText = Resource_CRUD.COR_SELECT;
+                selectCmd.CommandText = Cor_Queries.ObterCores;
 
                 using (var reader = selectCmd.ExecuteReader())
                 {
@@ -63,7 +63,7 @@ namespace ControleDeLetras.Repositorio
                 {
                     var deleteCmd = connection.CreateCommand();
                     deleteCmd.Parameters.AddWithValue("@id", id);
-                    deleteCmd.CommandText = Resource_CRUD.COR_DELETE;
+                    deleteCmd.CommandText = Cor_Queries.ApagarCor;
                     deleteCmd.ExecuteNonQuery();
 
                     transaction.Commit();
@@ -82,7 +82,7 @@ namespace ControleDeLetras.Repositorio
                     var insertCmd = connection.CreateCommand();
                     insertCmd.Parameters.Add(new SqliteParameter("@descricao", cor.Descricao));
                     insertCmd.Parameters.Add(new SqliteParameter("@valorARGB", cor.ValorARBG));
-                    insertCmd.CommandText = Resource_CRUD.COR_INSERT;
+                    insertCmd.CommandText = Cor_Queries.InserirCor;
                     insertCmd.ExecuteNonQuery();
 
                     transaction.Commit();
@@ -102,7 +102,7 @@ namespace ControleDeLetras.Repositorio
                     updateCmd.Parameters.AddWithValue("@id", cor.Id);
                     updateCmd.Parameters.AddWithValue("@descricao", cor.Descricao);
                     updateCmd.Parameters.AddWithValue("@valorARGB", cor.ValorARBG);
-                    updateCmd.CommandText = Resource_CRUD.COR_UPDATE;
+                    updateCmd.CommandText = Cor_Queries.AlterarCor;
                     updateCmd.ExecuteNonQuery();
 
                     transaction.Commit();
